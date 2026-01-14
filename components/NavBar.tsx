@@ -48,7 +48,7 @@ export default function Navbar() {
           <div className="flex justify-between h-14 items-center">
 
             {/* LOGO */}
-            <Link href={navBar.logo.href} className="text-[42px] font-black tracking-tighter text-foreground hover:opacity-80 transition-opacity">
+            <Link href={navBar.logo.href} className="text-[42px] font-extrabold tracking-tighter text-foreground hover:opacity-80 transition-opacity">
               {navBar.logo.textOrImage}
             </Link>
 
@@ -60,7 +60,7 @@ export default function Navbar() {
                 if (item.text === 'Servicios') {
                   return (
                     <div key={index} className="group relative h-full flex items-center">
-                      <button className="flex items-center gap-1 text-md font-bold text-foreground hover:text-primary transition-colors py-4 tracking-wide">
+                      <button className="flex items-center gap-1 text-md font-bold text-primary hover:text-primary transition-colors py-4 tracking-wide">
                         {item.text}
                         <ChevronDown className="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" />
                       </button>

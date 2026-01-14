@@ -31,8 +31,6 @@ export interface SiteConfig {
         image: string
     }
     servicios: {
-        showMarquee: boolean
-        textMarquee?: string[]
         title: string
         desc: string
         ctaPrimary: {
@@ -125,6 +123,10 @@ export interface SiteConfig {
         }>
         copyright: string
     }
+    design: {
+        background: 'barberia-urbana' | 'salon-de-belleza' | 'peluqueria-regular'
+        paleta: 'slate'
+    }
 }
 
 export const SITE_CONFIG: SiteConfig = {
@@ -178,8 +180,6 @@ export const SITE_CONFIG: SiteConfig = {
         image: '/',
     },
     servicios: {
-        showMarquee: true,
-        textMarquee: ['PALABRA', 'PALABRA'],
         title: 'NUESTROS SERVICIOS',
         desc: '[DESCRIPCIÓN] ej: No hacemos cortes estándar. Analizamos tu cráneo y facciones para darte el estilo que mejor te sienta. Precisión milimétrica.',
         ctaPrimary: {
@@ -372,5 +372,9 @@ export const SITE_CONFIG: SiteConfig = {
             }
         ],
         copyright: '[AÑO - NOMBRE]'
+    },
+    design: {
+        background: 'barberia-urbana',
+        paleta: 'slate'
     }
 }

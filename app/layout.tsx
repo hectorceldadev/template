@@ -1,6 +1,7 @@
 import Navbar from "@/components/NavBar";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
+import BackgroundSelector from "@/components/backgrounds/BackgroundSelector";
 
 export default function RootLayout({
   children,
@@ -10,13 +11,15 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`antialiased bg-pattern-urban`}
-        data-theme='dark'
+        className={`antialiased`}
+        data-theme='slate'
       >
         <div className="relative z-10">
-          <Navbar />
-          {children}
-          <Footer />
+          <BackgroundSelector >
+            <Navbar />
+            {children}
+            <Footer />
+          </BackgroundSelector>
         </div>
       </body>
     </html>

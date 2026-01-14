@@ -1,80 +1,9 @@
 @import "tailwindcss";
 
-/* ---------------------------------------------------------
-   1. VARIABLES BASE (Para que el texto no se rompa)
-   --------------------------------------------------------- */
-:root {
-  /* Por defecto mantenemos el texto blanco y fondo oscuro
-     para que el contenido se lea mientras probamos fondos */
-  --foreground: 255 255 255;
-  --background: 2 6 23; /* Slate 950 */
-  --primary: 124 58 237; 
-  --secondary: 15 23 42;
-  --muted: 148 163 184;
-  --border: 255 255 255;
+[data-theme="slate"] {
+  --color-background: rgb(2, 6, 23);
+  --color-foreground: rgb(255, 255, 255);
+  --color-primary: rgb(124, 58, 237);
+  --color-secondary: rgb(91, 33, 182);
+  --color-muted: rgb(203, 213, 225);
 }
-
-[data-theme='dark'] {
-  --background: 2 6 23;      /** Slate 950 */
-  --foreground: 255 255 255; /** White */
-  --primary: 124 58 237;     /** Violet 600 */
-  --secondary: 156 163 175;  /** Gray 400 */
-  --tertiary: 91 33 182;     /** Violet 800 (Para badges) */
-  --muted: 148 163 184       //** Slate (400)*/
-}
-
-/* ---------------------------------------------------------
-   2. BACKGROUNDS (Copia Exacta de tus Snippets)
-   --------------------------------------------------------- */
-
-/* OPCIÓN 1: LUXURY (El Rosa Suave)
-   Basado en: "Soft Rose Glow Dual Corners Background"
-   Color exacto: #f984e5 */
-.bg-pattern-luxury {
-  background-color: #fff;
-  background-image: 
-    radial-gradient(circle 850px at 10% 10%, #f984e5, transparent),
-    radial-gradient(circle 850px at 90% 90%, #f984e5, transparent);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  
-  /* Forzamos variables de texto oscuro para este fondo claro */
-  --foreground: 0 0 0;
-  --background: 255 255 255;
-}
-
-/* OPCIÓN 2: URBAN (El Grid)
-   Basado en: "Dark Basic Grid Background - Slate 950"
-   Colores exactos: #020617 y rgba(100,116,139,0.4) */
-.bg-pattern-urban {
-  background-color: #020617;
-  background-image: 
-    linear-gradient(to right, rgba(100,116,139,0.4) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(100,116,139,0.4) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-/* OPCIÓN 3: CLASSIC (El Glow Azulado)
-   Basado en: "X Organizations Black Background with Top Glow"
-   Colores exactos: #000000 y rgba(120, 180, 255, 0.25) */
-.bg-pattern-classic {
-  background-color: #000000;
-  background-image: 
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(120, 180, 255, 0.25), transparent 70%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
-  /* Mantenemos variables oscuras */
-  --foreground: 255 255 255;
-  --background: 0 0 0;
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
-}
-
-.animate-marquee {
-  animation: marquee 25s linear infinite;
-}
-

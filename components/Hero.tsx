@@ -30,7 +30,7 @@ const Hero = () => {
             className={`pt-28 pb-16 px-5 lg:px-10 overflow-hidden`}
         >
             {/* Background Accent */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-100 bg-violet-600/15 rounded-full blur-2xl pointer-events-none" />
+            {/* <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-100 bg-violet-600/15 rounded-full blur-2xl pointer-events-none" /> */}
 
             <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -111,7 +111,7 @@ const Hero = () => {
                     {/* --- COLUMNA IMAGEN --- */}
                     <div className="relative mx-auto w-[90%] lg:w-[70%] mt-4 lg:pt-2">
                         {/* Decoración */}
-                        <div className="absolute -inset-4 bg-violet-600/20 rounded-3xl rotate-6 blur-md hidden sm:block"></div>
+                        {/* <div className="absolute -inset-4 bg-violet-600/20 rounded-3xl rotate-6 blur-md hidden sm:block"></div> */}
 
                         <div className="relative aspect-3/4 rounded-2xl overflow-hidden grayscale border border-zinc-700 bg-zinc-900 shadow-2xl shadow-black/50">
                             {/* IMAGEN DEL CONFIG */}
