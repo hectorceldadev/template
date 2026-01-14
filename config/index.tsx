@@ -46,6 +46,7 @@ export interface SiteConfig {
             icon: string
             price: string
             slug: string
+            features: string[]
         }>
     }
     galeria: {
@@ -106,6 +107,7 @@ export interface SiteConfig {
                 }
             }
         }
+        iframe: string
     },
     footer: {
         logo: string
@@ -195,7 +197,8 @@ export const SITE_CONFIG: SiteConfig = {
                 fullDesc: '[Servicio 1 Full Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
                 icon: 'Scissors',
                 price: '15€',
-                slug: 'slug-servicio' //** Colocar slug */
+                slug: 'slug-servicio', //** Colocar slug */
+                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo']
             },
             {
                 id: '[slug-servicio]',
@@ -204,7 +207,8 @@ export const SITE_CONFIG: SiteConfig = {
                 fullDesc: '[Servicio 1 Full Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
                 icon: 'Scissors',
                 price: '15€',
-                slug: 'slug-servicio' //** Colocar slug */
+                slug: 'slug-servicio', //** Colocar slug */
+                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo']
             },
             {
                 id: '[slug-servicio]',
@@ -213,7 +217,8 @@ export const SITE_CONFIG: SiteConfig = {
                 fullDesc: '[Servicio 1 Full Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
                 icon: 'Scissors',
                 price: '15€',
-                slug: 'slug-servicio' //** Colocar slug */
+                slug: 'slug-servicio', //** Colocar slug */
+                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo']
             },
             {
                 id: '[slug-servicio]',
@@ -222,7 +227,8 @@ export const SITE_CONFIG: SiteConfig = {
                 fullDesc: '[Servicio 1 Full Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
                 icon: 'Scissors',
                 price: '15€',
-                slug: 'slug-servicio' //** Colocar slug */
+                slug: 'slug-servicio', //** Colocar slug */
+                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo']
             },
         ]
     },
@@ -348,7 +354,8 @@ export const SITE_CONFIG: SiteConfig = {
                     }
                 }
             }
-        }
+        },
+        iframe: 'ej: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8055.387038917681!2d-0.4179848061566288!3d39.356681653906115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604d00336c8bb5%3A0x265a3a0c7ddaaf23!2sAvinguda%20de%20Llu%C3%ADs%20Vives%2C%2014%2C%2046460%20Silla%2C%20Val%C3%A8ncia!5e0!3m2!1ses!2ses!4v1767958245944!5m2!1ses!2ses'
     },
     footer: {
         logo: '[LOGO]',

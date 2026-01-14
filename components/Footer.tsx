@@ -20,9 +20,9 @@ export const Footer = () => {
     const serviceLinks = servicios.items.slice(0, 4);
 
     return (
-        <footer className="bg-secondary border-t border-white/10 relative z-50 text-muted-foreground">
-            <div className="max-w-7xl mx-auto px-6 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 md:ml-20 gap-12 mb-12">
+        <footer className="bg-background-secondary border-t border-foreground/10 relative z-50 text-muted">
+            <div className="max-w-7xl mx-auto px-6 py-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 md:ml-20 gap-12 mb-4">
 
                     {/* --- COLUMNA 1: BRANDING --- */}
                     <div className="md:col-span-1 space-y-4">
@@ -47,7 +47,7 @@ export const Footer = () => {
                                         key={i}
                                         href={social.href}
                                         target="_blank"
-                                        className="w-10 h-10 rounded-full bg-background ring-1 ring-white/10 flex items-center justify-center text-muted-foreground hover:ring-primary hover:text-primary transition-all"
+                                        className="w-10 h-10 rounded-full bg-background ring-1 ring-foreground/10 flex items-center justify-center text-muted-foreground hover:ring-primary hover:text-primary transition-all"
                                     >
                                         <Icon size={20} />
                                     </Link>
@@ -59,7 +59,7 @@ export const Footer = () => {
                     {/* --- COLUMNA 2: NAVEGACIÓN (EXPLORA) --- */}
                     {footer.navSections.map((section, idx) => (
                         <div key={idx}>
-                            <h4 className="font-bold text-foreground mb-6 uppercase tracking-wide">{section.title}</h4>
+                            <h4 className="font-bold text-foreground mb-2 uppercase tracking-wide">{section.title}</h4>
                             <ul className="space-y-4 text-sm">
                                 {section.items.map((item, i) => {
                                     if (item.href === '/') return
@@ -77,7 +77,7 @@ export const Footer = () => {
 
                     {/* --- COLUMNA 3: SERVICIOS DESTACADOS (AUTOMÁTICA) --- */}
                     <div>
-                        <h4 className="font-bold text-foreground mb-6 uppercase tracking-wide">Servicios</h4>
+                        <h4 className="font-bold text-foreground mb-2 uppercase tracking-wide">Servicios</h4>
                         <ul className="space-y-4 text-sm">
                             {serviceLinks.map((service, i) => (
                                 <li key={i}>
@@ -95,7 +95,7 @@ export const Footer = () => {
                 </div>
 
                 {/* --- COPYRIGHT --- */}
-                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row md:justify-between items-center gap-4 text-sm">
+                <div className="pt-4 border-t border-white/10 flex flex-col md:flex-row md:justify-between items-center gap-4 text-sm">
                     <p className='md:text-left text-center'>
                         © {footer.copyright.replace('[AÑO]', currentYear.toString())}. Todos los derechos reservados.
                     </p>

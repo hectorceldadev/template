@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Scissors, User, Zap, Star, ArrowUpRight, LucideIcon } from 'lucide-react'
+import { ArrowRight, Scissors, User, Zap, Star, ArrowUpRight, LucideIcon, Check } from 'lucide-react'
 import { SITE_CONFIG } from '@/config'
 // Si no tienes las fuentes, borra esta línea
 
@@ -22,7 +22,7 @@ const Servicios = () => {
     const CtaIcon = iconMap[servicios.ctaPrimary.icon] || ArrowUpRight;
 
     return (
-        <section className="bg-background relative pt-26 pb-10 overflow-hidden">
+        <section className="relative pt-26 pb-10 overflow-hidden">
 
             <div className="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 pt-10">
 
@@ -32,7 +32,7 @@ const Servicios = () => {
                         {servicios.title.split(' ')[0]} <br />
                         <span className="text-primary">{servicios.title.split(' ').slice(1).join(' ')}</span>
                     </h2>
-                    <p className="text-muted-foreground max-w-md text-sm sm:text-base font-medium">
+                    <p className="text-muted max-w-md text-sm sm:text-base font-medium">
                         {servicios.desc}
                     </p>
                 </div>
@@ -46,7 +46,7 @@ const Servicios = () => {
                             <Link
                                 key={'Servicio' + i}
                                 href={`/servicios/${service.slug}`}
-                                className="group relative p-6 rounded-2xl bg-secondary ring-1 ring-white/10 hover:ring-primary/50 transition-all duration-300 hover:bg-secondary/80 active:scale-[0.98]"
+                                className="group relative p-6 rounded-2xl bg-background-secondary ring-1 ring-foreground/20 hover:ring-primary/50 transition-all duration-300 hover:bg-background-secondary/80 active:scale-[0.98]"
                             >
                                 {/* Efecto Glow en Hover */}
                                 <div className="absolute inset-0 bg-primary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -55,11 +55,11 @@ const Servicios = () => {
                                     
                                     {/* Header Card */}
                                     <div className="flex justify-between items-start mb-6">
-                                        <div className="p-3 bg-background rounded-xl text-muted-foreground group-hover:text-white group-hover:bg-primary transition-colors duration-300">
+                                        <div className="p-3 bg-foreground/10 rounded-xl text-foreground group-hover:bg-primary transition-colors duration-300">
                                             <Icon size={24} />
                                         </div>
                                         {/* ID decorativo o numero */}
-                                        <span className={`text-4xl text-background/10 group-hover:text-primary/10 transition-colors font-black`}>
+                                        <span className={`text-4xl text-muted/10 group-hover:text-muted/40 transition-colors font-black`}>
                                             0{servicios.items.indexOf(service) + 1}
                                         </span>
                                     </div>
@@ -77,16 +77,25 @@ const Servicios = () => {
                                     </div>
 
                                     {/* Descripción */}
-                                    <p className="text-sm text-muted-foreground leading-relaxed mb-6 line-clamp-2">
+                                    <p className="text-sm text-muted leading-relaxed mb-6 line-clamp-2">
                                         {service.desc}
                                     </p>
 
                                     {/* Footer Card (Flecha) */}
-                                    <div className='mt-auto flex justify-end items-center border-t border-white/5 pt-4'>
-                                        <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider group-hover:text-primary transition-colors mr-2">
-                                            Reservar
-                                        </span>
-                                        <ArrowRight className='w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all duration-300' />
+                                    <div className='mt-auto flex justify-between items-center pt-4'>
+                                        <div className='flex flex-col justify-start gap-1 items-start'>
+                                            {
+                                                service.features.map((feature) => (
+                                                    <div key={feature} className='flex gap-2 items-center'>
+                                                        <Check className='text-primary w-4 h-4'/>
+                                                        <span className='text-muted text-xs'>
+                                                            {feature}
+                                                        </span>
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
+                                        <ArrowUpRight className='w-6 h-6 text-foreground group-hover:text-primary group-hover:translate-x-1 transition-all duration-300' />
                                     </div>
                                 </div>
                             </Link>
@@ -98,11 +107,11 @@ const Servicios = () => {
                 <div className='flex justify-center items-center pt-12'>
                     <Link
                         href={servicios.ctaPrimary.href}
-                        className="group w-full sm:w-auto rounded-xl ring-1 ring-white/10 bg-primary px-8 py-4 text-white transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 active:scale-95"
+                        className="group w-full sm:w-auto rounded-xl ring-1 ring-foreground/10 bg-primary px-8 py-4 text-foreground transition-all duration-150 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 active:scale-95"
                     >
-                        <div className="flex items-center justify-center gap-2 font-bold uppercase tracking-wide text-sm sm:text-base">
+                        <div className="flex items-center justify-center gap-1 font-bold uppercase tracking-wide text-sm sm:text-base">
                             {servicios.ctaPrimary.text}
-                            <CtaIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                            <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                         </div>
                     </Link>
                 </div>

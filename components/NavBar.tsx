@@ -41,7 +41,7 @@ export default function Navbar() {
       
       {/* --- NAVBAR FLOTANTE --- */}
       <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] md:w-[95%] max-w-7xl 
-                      bg-secondary/90 backdrop-blur-md border border-white/10 
+                      bg-background backdrop-blur-md border border-white/10 
                       rounded-full shadow-2xl transition-all duration-300 z-50 py-2">
         
         <div className="px-6 lg:px-8">
@@ -60,7 +60,7 @@ export default function Navbar() {
                 if (item.text === 'Servicios') {
                   return (
                     <div key={index} className="group relative h-full flex items-center">
-                      <button className="flex items-center gap-1 text-md font-bold text-primary hover:text-primary transition-colors py-4 tracking-wide">
+                      <button className="flex items-center gap-1 text-md font-bold text-foreground hover:text-primary transition-colors py-4 tracking-wide">
                         {item.text}
                         <ChevronDown className="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" />
                       </button>
@@ -70,7 +70,7 @@ export default function Navbar() {
                                       group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 
                                       transition-all duration-300 ease-out origin-top">
                         
-                        <div className="bg-seondary/90 border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden p-6 relative">
+                        <div className="bg-background border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden p-6 relative">
                           
                           {/* Fondo decorativo */}
                           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px] rounded-full pointer-events-none" />
@@ -87,14 +87,14 @@ export default function Navbar() {
                                   href={`/servicios/${service.slug}`}
                                   className="group/item flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5 transition-all"
                                 >
-                                  <div className="w-10 h-10 rounded-lg bg-secondary/50 border border-white/10 flex items-center justify-center text-muted-foreground group-hover/item:text-primary group-hover/item:border-primary/30 transition-colors">
+                                  <div className="w-10 h-10 rounded-lg bg-background/50 border border-white/10 flex items-center justify-center text-foreground group-hover/item:text-primary group-hover/item:border-primary/30 transition-colors">
                                     <Icon size={20} />
                                   </div>
                                   <div className="flex-1">
-                                    <h4 className="text-foreground text-sm font-bold leading-none mb-1 group-hover/item:text-primary transition-colors uppercase">
+                                    <h4 className="text-foreground text-sm font-bold leading-none mb-1 group-hover/item:text-primary transition-colors">
                                       {service.title}
                                     </h4>
-                                    <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">
+                                    <span className="text-[10px] text-muted font-bold uppercase tracking-wider">
                                       {service.price} · Reservar
                                     </span>
                                   </div>
@@ -104,7 +104,7 @@ export default function Navbar() {
                             })}
                           </div>
 
-                          <Link href="/servicios" className="block mt-4 pt-4 border-t border-white/10 text-center text-xs font-bold text-muted-foreground hover:text-white uppercase tracking-[0.2em] transition-colors">
+                          <Link href="/servicios" className="block mt-4 pt-4 border-t border-white/10 text-center text-xs font-bold text-foreground hover:text-white uppercase tracking-[0.2em] transition-colors">
                             Ver carta completa →
                           </Link>
                         </div>
@@ -133,7 +133,6 @@ export default function Navbar() {
                 target="_blank"
                 className="hidden md:flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-full ring ring-white/10 text-md font-bold transition-all shadow-[0_0_20px_rgba(var(--primary),0.3)] active:scale-95 uppercase tracking-wider"
               >
-                <CalendarDays size={14} />
                 {navBar.cta.text}
               </Link>
 
@@ -178,7 +177,7 @@ export default function Navbar() {
                             className="flex items-center gap-3 py-2 text-muted-foreground hover:text-white transition-colors"
                           >
                             <Icon size={16} className="text-primary" />
-                            <span className="font-bold text-sm">{service.title}</span>
+                            <span className="font-bold text-foreground text-sm">{service.title}</span>
                           </Link>
                         )
                       })}

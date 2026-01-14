@@ -14,13 +14,11 @@ export default function RootLayout({
         className={`antialiased`}
         data-theme='slate'
       >
-        <div className="relative z-10">
           <BackgroundSelector >
             <Navbar />
-            {children}
+              {children}
             <Footer />
           </BackgroundSelector>
-        </div>
       </body>
     </html>
   );

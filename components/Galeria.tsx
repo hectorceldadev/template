@@ -14,17 +14,17 @@ const Galeria = () => {
         : galeria.images;
 
     return (
-        <section className="w-full py-10 bg-background overflow-hidden relative">
+        <section className="w-full py-10 overflow-hidden relative">
 
             {/* --- CABECERA --- */}
             <div className="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 mb-12">
-                <span className="text-primary font-bold tracking-widest uppercase text-xs mb-2 block">
+                <span className="text-secondary font-bold tracking-widest uppercase text-xs mb-2 block">
                     {galeria.badge}
                 </span>
                 <h2 className={`text-[42px] md:text-5xl text-foreground uppercase leading-none`}>
                     {galeria.title}
                 </h2>
-                <p className="text-muted-foreground mt-4 max-w-md">
+                <p className="text-muted mt-4 max-w-md">
                     {galeria.desc}
                 </p>
             </div>
@@ -43,7 +43,7 @@ const Galeria = () => {
                                 {displayImages.slice(0, 4).map((imagen, index) => (
                                     <div
                                         key={`marquee-${index}`}
-                                        className="group relative w-72 h-96 shrink-0 rounded-2xl overflow-hidden border border-white/10 bg-secondary transition-all duration-500 hover:scale-105 hover:border-primary/50 cursor-pointer"
+                                        className="group relative w-72 h-96 shrink-0 rounded-2xl overflow-hidden border border-foreground/10 bg-background-secondary transition-all duration-500 hover:scale-105 hover:border-primary/50 cursor-pointer"
                                     >
                                         <Image
                                             src={imagen.src}
@@ -54,7 +54,7 @@ const Galeria = () => {
                                         />
                                         <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                                             <div className="flex justify-between items-center">
-                                                <p className="text-white text-sm font-bold leading-tight line-clamp-2 pr-4">
+                                                <p className="text-foreground text-sm font-bold leading-tight line-clamp-2 pr-4">
                                                     {imagen.alt}
                                                 </p>
                                                 <ArrowUpRight className="text-primary w-5 h-5 shrink-0" />
@@ -73,7 +73,7 @@ const Galeria = () => {
                         {galeria.images.slice(0, 3).map((imagen, index) => (
                             <div
                                 key={`grid-${index}`}
-                                className="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-secondary transition-all duration-300 hover:border-primary/50"
+                                className="group relative aspect-square rounded-2xl overflow-hidden border border-foreground/10 bg-background-secondary transition-all duration-300 hover:border-primary/50"
                             >
                                 <Image
                                     src={imagen.src}
@@ -82,8 +82,13 @@ const Galeria = () => {
                                     className="object-cover transition-transform duration-700 grayscale group-hover:grayscale-0 group-hover:scale-110"
                                     sizes="(max-width: 768px) 100vw, 400px"
                                 />
-                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <ArrowUpRight className="text-primary w-8 h-8" />
+                                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                                    <div className="flex justify-between items-center">
+                                        <p className="text-foreground text-sm font-bold leading-tight line-clamp-2 pr-4">
+                                            {imagen.alt}
+                                        </p>
+                                        <ArrowUpRight className="text-primary w-5 h-5 shrink-0" />
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -95,11 +100,11 @@ const Galeria = () => {
             <div className="flex justify-center relative z-20">
                 <Link
                     href={galeria.cta.href}
-                    className="group w-full sm:w-auto mx-5 rounded-xl ring-1 ring-white/10 bg-secondary px-8 py-4 text-foreground transition-all hover:bg-secondary/80 hover:ring-primary/50 active:scale-95"
+                    className="group w-full sm:w-auto mx-5 rounded-xl ring-1 ring-foreground/10 bg-primary px-8 py-4 text-foreground transition-all hover:bg-primary/90 hover:ring-primary/50 active:scale-95"
                 >
-                    <div className="flex items-center justify-center gap-2 font-bold uppercase tracking-wide text-sm sm:text-base">
+                    <div className="flex items-center justify-center gap-1 font-bold uppercase tracking-wide text-sm sm:text-base">
                         {galeria.cta.text}
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-primary" />
+                        <ArrowUpRight className="w-5 h-5 relative transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 text-foreground" />
                     </div>
                 </Link>
             </div>

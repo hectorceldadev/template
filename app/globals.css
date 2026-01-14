@@ -1,9 +1,25 @@
 @import "tailwindcss";
 
+/* 1. OBLIGATORIO: Registra los colores para que Tailwind cree las clases */
+@theme {
+  --color-background: #fff;
+  --color-background-secondary: #fff;
+  --color-foreground: #fff;
+  --color-primary: #fff;
+  --color-primary-light: #fff;
+  --color-secondary: #fff;
+  --color-muted: #fff;
+}
+
+/* 2. Configuración de los temas (Sobreescritura de variables) */
+
+/* Tema: Slate (Por defecto) */
 [data-theme="slate"] {
-  --color-background: rgb(2, 6, 23);
-  --color-foreground: rgb(255, 255, 255);
-  --color-primary: rgb(124, 58, 237);
-  --color-secondary: rgb(91, 33, 182);
-  --color-muted: rgb(203, 213, 225);
+  --color-background: #020617;
+  --color-background-secondary: #18181b;
+  --color-foreground: #ffffff;
+  --color-primary: #7c3aed;
+  --color-primary-light: #c4b5fd;
+  --color-secondary: #6d28d9;
+  --color-muted: #9ca3af;
 }
