@@ -8,13 +8,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body
-        className={`antialiased`}
+        className={`antialiased bg-pattern-urban`}
+        data-theme='dark'
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <div className="relative z-10">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

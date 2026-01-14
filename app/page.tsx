@@ -6,7 +6,7 @@ import Servicios from "@/components/Servicios"
 
 const page = () => {
   return (
-    <div className="bg-slate-500 min-h-screen">
+    <div>
       <Hero />
       <Servicios />
       <Galeria />

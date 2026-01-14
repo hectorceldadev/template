@@ -374,5 +374,3 @@ export const SITE_CONFIG: SiteConfig = {
         copyright: '[AÑO - NOMBRE]'
     }
 }
-
-
