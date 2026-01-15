@@ -126,9 +126,9 @@ export interface SiteConfig {
         copyright: string
     }
     design: {
-        background: 'barberia-urbana' | 'salon-de-belleza' | 'peluqueria-regular'
+        background: 'barberia-urbana' | 'salon-de-belleza' | 'peluqueria-regular' | 'CrossBackground' | 'HexBackground' | 'WaveBackground'
         paleta: 'violet' | 'yellow' | 'green' | 'orange' | 'amber' | 'red' | 'lime' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' |'indigo' | 'purple' | 'fuchsia' | 'pink' | 'rose' | 'slate' | 'gray' | 'zinc' | 'neutral' | 'stone' | 
-        /* SALON DE BELLEZA */'nude' | 'nude-rose' | 'lavender' | 'sage' | 'matcha' | 'glacial' | 'ocean' | 'latte' |'blush' | 'mauve' | 'peach'
+        /* SALON DE BELLEZA */'nude' | 'nude-rose' | 'lavender' | 'sage' | 'matcha' | 'glacial' | 'ocean' | 'latte' |'blush' | 'mauve' | 'peach' 
         typography: 'barberiaUrbana' | 'salonBelleza' | 'peluqueriaRegular' 
     }
 }
@@ -384,7 +384,7 @@ export const SITE_CONFIG: SiteConfig = {
     },
     design: {
         background: 'salon-de-belleza',
-        paleta: 'lavender',
+        paleta: 'green',
         typography: 'salonBelleza'
     }
 }

@@ -355,3 +355,8 @@
   --font-title: var(--font-playfair);
   --font-regular: var(--font-lato);
 }
+
+[data-font='peluqueriaRegular'] {
+  --font-title: var(--font-oswald); 
+  --font-regular: var(--font-opensans); 
+}

@@ -6,18 +6,15 @@ interface Props {
 
 const RegularBackground = ({ children }: Props) => {
     return (
-        <div className="min-h-screen w-full bg-background relative">
-            {/* Lime Radial Glow Background */}
-            <div
-                className="absolute inset-0 z-0"
-                style={{
-                    backgroundImage: `radial-gradient(circle 500px at 50% 100px, rgba(253, 224, 71,0.6), transparent)`,
-                }}
+        <div className="min-h-screen w-full bg-background relative isolate">
+            <div 
+                className="absolute top-0 left-0 w-full h-[50vh] bg-linear-to-b from-primary/20 to-transparent z-0 pointer-events-none"
             />
-            {children}
+            <div className="relative z-10">
+                {children}
+            </div>
         </div>
     )
 }
 
 export default RegularBackground
-

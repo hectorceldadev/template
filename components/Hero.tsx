@@ -31,7 +31,7 @@ const Hero = () => {
         >
             {/* Background Accent */}
             {
-                design.background === 'salon-de-belleza'
+                design.background === 'salon-de-belleza' || 'peluqueria-regular'
                 ?
                 ''
                 : 
@@ -117,7 +117,7 @@ const Hero = () => {
                     {/* --- COLUMNA IMAGEN --- */}
                     <div className="relative mx-auto w-[90%] lg:w-[70%] mt-4 lg:pt-2">
                         {/* Decoración */}
-                        <div className="absolute -inset-4 bg-primary/20 rounded-3xl rotate-6 blur-3xl hidden sm:block"></div>
+                        <div className="absolute -inset-4 bg-primary/20 rounded-4xl rotate-1 blur-sm hidden sm:block"></div>
 
                         <div className="relative aspect-3/4 rounded-2xl overflow-hidden grayscale border border-foreground/10 bg-background shadow-2xl shadow-background/60">
                             {/* IMAGEN DEL CONFIG */}
