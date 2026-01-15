@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 // 1. Importamos el tipo 'LucideIcon' para que TypeScript sea feliz
-import { ChevronDown, Menu, X, CalendarDays, ArrowUpRight, Scissors, User, Zap, Star, ArrowRight, type LucideIcon } from 'lucide-react'
+import { ChevronDown, Menu, X, CalendarDays, ArrowUpRight, Scissors, User, Zap, Star, type LucideIcon } from 'lucide-react'
 import { SITE_CONFIG } from '@/config'
 
 // 2. Definimos que este objeto tiene claves string y valores LucideIcon
@@ -38,24 +38,24 @@ export default function Navbar() {
 
   return (
     <div className="relative z-100">
-      
+
       {/* --- NAVBAR FLOTANTE --- */}
       <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] md:w-[95%] max-w-7xl 
-                      bg-background backdrop-blur-md border border-white/10 
-                      rounded-full shadow-2xl transition-all duration-300 z-50 py-2">
-        
+                      bg-background/10 backdrop-blur-xl border border-foreground/10 
+                      rounded-full shadow-2xl transition-all duration-300 z-100 py-2">
+
         <div className="px-6 lg:px-8">
           <div className="flex justify-between h-14 items-center">
 
             {/* LOGO */}
-            <Link href={navBar.logo.href} className="text-[42px] font-extrabold tracking-tighter text-foreground hover:opacity-80 transition-opacity">
+            <Link href={navBar.logo.href} className="text-[42px] font-title font-extrabold tracking-tighter text-foreground hover:opacity-80 transition-opacity">
               {navBar.logo.textOrImage}
             </Link>
 
             {/* NAVEGACIÓN DESKTOP */}
-            <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            <div className="hidden md:flex items-center gap-6 lg:gap-8 font-regular">
               {navBar.navegacion.map((item, index) => {
-                
+
                 // --- MEGA MENU SERVICIOS ---
                 if (item.text === 'Servicios') {
                   return (
@@ -69,9 +69,9 @@ export default function Navbar() {
                                       opacity-0 invisible translate-y-2 
                                       group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 
                                       transition-all duration-300 ease-out origin-top">
-                        
+
                         <div className="bg-background border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden p-6 relative">
-                          
+
                           {/* Fondo decorativo */}
                           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px] rounded-full pointer-events-none" />
 
@@ -80,7 +80,7 @@ export default function Navbar() {
                             {servicios.items.slice(0, 6).map((service, i) => {
                               // 4. Arreglado: TypeScript ya sabe que esto es seguro
                               const Icon = iconMap[service.icon] || Star;
-                              
+
                               return (
                                 <Link
                                   key={i}
@@ -104,7 +104,7 @@ export default function Navbar() {
                             })}
                           </div>
 
-                          <Link href="/servicios" className="block mt-4 pt-4 border-t border-white/10 text-center text-xs font-bold text-foreground hover:text-white uppercase tracking-[0.2em] transition-colors">
+                          <Link href="/servicios" className="block mt-4 pt-4 border-t border-foreground/10 text-center text-xs font-bold text-foreground hover:text-primary uppercase tracking-[0.2em] transition-colors">
                             Ver carta completa →
                           </Link>
                         </div>
@@ -115,9 +115,9 @@ export default function Navbar() {
 
                 // Enlaces Normales
                 return (
-                  <Link 
-                    key={index} 
-                    href={item.href} 
+                  <Link
+                    key={index}
+                    href={item.href}
                     className="text-md font-bold text-foreground hover:text-primary transition-colors tracking-wide"
                   >
                     {item.text}
@@ -136,7 +136,7 @@ export default function Navbar() {
                 {navBar.cta.text}
               </Link>
 
-              <button 
+              <button
                 className="md:hidden p-2 text-foreground hover:text-primary transition-colors relative z-60"
                 onClick={() => setIsOpen(!isOpen)}
               >
@@ -149,43 +149,43 @@ export default function Navbar() {
       </nav>
 
       {/* --- MENU MÓVIL (OVERLAY) --- */}
-      <div 
+      <div
         className={`
-          fixed inset-0 bg-background z-40 md:hidden transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]
+          fixed inset-0 font-regular bg-background z-40 md:hidden transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]
           ${isOpen ? 'translate-x-0' : 'translate-x-full'}
         `}
       >
         <div className="flex flex-col h-full pt-28 px-8 pb-10 overflow-y-auto">
-          
-          <div className="space-y-6 flex-1">
+
+          <div className="space-y-8 flex-1">
             {navBar.navegacion.map((item, index) => {
-              
+              if (item.text === 'Sobre Nosotros') return
               // Versión Móvil de Servicios
               if (item.text === 'Servicios') {
                 return (
-                  <div key={index} className="border-b border-white/5 pb-6">
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-primary font-black mb-4 mt-2">
+                  <div key={index} className="border-b borderforeground/20 pb-6">
+                    <p className="text-xs uppercase tracking-[0.2em] text-primary-light font-black mb-4 mt-2">
                       Nuestros Servicios
                     </p>
-                    <div className="grid grid-cols-1 gap-3 pl-2 border-l border-white/10">
+                    <div className="grid grid-cols-1 gap-3">
                       {servicios.items.slice(0, 4).map((service, i) => {
                         const Icon = iconMap[service.icon] || Star;
                         return (
                           <Link
                             key={i}
                             href={`/servicios/${service.slug}`}
-                            className="flex items-center gap-3 py-2 text-muted-foreground hover:text-white transition-colors"
+                            className="flex bg-foreground/20 ring ring-foreground px-4 py-3 rounded-xl items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
                           >
-                            <Icon size={16} className="text-primary" />
-                            <span className="font-bold text-foreground text-sm">{service.title}</span>
+                            <Icon size={18} className="text-primary" />
+                            <span className="font-bold text-foreground text-md">{service.title}</span>
                           </Link>
                         )
                       })}
                       <Link
                         href="/servicios"
-                        className="text-xs font-bold text-primary mt-2 flex items-center gap-1"
+                        className="font-bold text-foreground bg-primary text-md rounded-xl px-4 py-4 mt-2 flex justify-between items-center gap-1"
                       >
-                        Ver todo <ArrowRight size={12} />
+                        Ver todos los servicios <ArrowUpRight size={18} />
                       </Link>
                     </div>
                   </div>
@@ -194,9 +194,9 @@ export default function Navbar() {
 
               return (
                 <div key={index} className="border-b border-white/5 pb-2">
-                  <Link 
+                  <Link
                     href={item.href}
-                    className="block text-4xl font-black text-foreground hover:text-primary transition-colors tracking-tight uppercase"
+                    className="block text-4xl font-black text-foreground hover:text-primary transition-colors tracking-tight"
                   >
                     {item.text}
                   </Link>
@@ -204,12 +204,21 @@ export default function Navbar() {
               )
             })}
           </div>
+          <div className="border-b border-white/5 pt-8 pb-2">
+
+            <Link
+              href={'/sobre-nosotros'}
+              className="block text-4xl font-black text-foreground hover:text-primary transition-colors tracking-tight"
+            >
+              Sobre Nosotros
+            </Link>
+          </div>
 
           <div className="mt-auto pt-6">
             <Link
               href={navBar.cta.href}
               target="_blank"
-              className="flex items-center justify-center gap-3 w-full bg-primary text-white py-5 rounded-3xl font-bold text-xl shadow-2xl shadow-primary/20 active:scale-95 transition-transform uppercase"
+              className="flex items-center justify-center gap-3 w-full bg-primary text-white py-5 rounded-3xl font-bold text-xl shadow-2xl shadow-primary/20 active:scale-95 transition-transform"
             >
               <CalendarDays className="w-6 h-6" />
               {navBar.cta.text}

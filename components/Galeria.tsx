@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowUpRight, ArrowRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import { SITE_CONFIG } from "@/config"
 
 const Galeria = () => {
@@ -14,14 +14,14 @@ const Galeria = () => {
         : galeria.images;
 
     return (
-        <section className="w-full py-10 overflow-hidden relative">
+        <section className="w-full py-10 overflow-hidden relative font-regular">
 
             {/* --- CABECERA --- */}
             <div className="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 mb-12">
                 <span className="text-secondary font-bold tracking-widest uppercase text-xs mb-2 block">
                     {galeria.badge}
                 </span>
-                <h2 className={`text-[42px] md:text-5xl text-foreground uppercase leading-none`}>
+                <h2 className={`text-[42px] md:text-5xl text-foreground uppercase leading-none font-title`}>
                     {galeria.title}
                 </h2>
                 <p className="text-muted mt-4 max-w-md">

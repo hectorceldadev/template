@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Scissors, User, Zap, Star, ArrowUpRight, LucideIcon, Check } from 'lucide-react'
+import { Scissors, User, Zap, Star, ArrowUpRight, LucideIcon, Check } from 'lucide-react'
 import { SITE_CONFIG } from '@/config'
 // Si no tienes las fuentes, borra esta línea
 
@@ -18,17 +18,14 @@ const Servicios = () => {
     // 2. Extraemos la config
     const { servicios } = SITE_CONFIG;
 
-    // Resolvemos el icono del botón principal
-    const CtaIcon = iconMap[servicios.ctaPrimary.icon] || ArrowUpRight;
-
     return (
-        <section className="relative pt-26 pb-10 overflow-hidden">
+        <section className="relative pt-26 pb-10 overflow-hidden font-regular">
 
             <div className="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 pt-10">
 
                 {/* --- HEADER SECCIÓN --- */}
                 <div className="mb-16">
-                    <h2 className={`text-[42px] md:text-5xl text-foreground uppercase mb-4`}>
+                    <h2 className={`text-[42px] md:text-5xl text-foreground uppercase mb-4 font-title`}>
                         {servicios.title.split(' ')[0]} <br />
                         <span className="text-primary">{servicios.title.split(' ').slice(1).join(' ')}</span>
                     </h2>
@@ -59,18 +56,18 @@ const Servicios = () => {
                                             <Icon size={24} />
                                         </div>
                                         {/* ID decorativo o numero */}
-                                        <span className={`text-4xl text-muted/10 group-hover:text-muted/40 transition-colors font-black`}>
+                                        <span className={`text-4xl text-muted/10 font-title group-hover:text-muted/40 transition-colors font-black`}>
                                             0{servicios.items.indexOf(service) + 1}
                                         </span>
                                     </div>
 
                                     {/* Título y Precio */}
                                     <div className="flex justify-between items-baseline mb-3">
-                                        <h3 className={`text-2xl text-foreground uppercase tracking-wide`}>
+                                        <h3 className={`text-2xl text-foreground uppercase tracking-wide font-title`}>
                                             {service.title}
                                         </h3>
                                         {service.price && (
-                                            <span className="text-xl font-bold text-primary">
+                                            <span className="text-xl font-bold text-primary font-title">
                                                 {service.price}
                                             </span>
                                         )}

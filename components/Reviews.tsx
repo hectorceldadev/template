@@ -12,14 +12,14 @@ export const Reviews = () => {
     const marqueeReviews = [...reviews.items, ...reviews.items, ...reviews.items].slice(0, 12); 
 
     return (
-        <section className="w-full z-10 py-10 overflow-hidden relative">
+        <section className="w-full z-10 py-10 overflow-hidden relative font-regular">
             
             {/* --- CABECERA --- */}
             <div className="max-w-7xl mx-auto px-5 lg:px-10 mb-16">
                 <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-3 block">
                     {reviews.badge}
                 </span>
-                <h2 className={`text-[42px] md:text-5xl text-foreground uppercase`}>
+                <h2 className={`text-[42px] md:text-5xl text-foreground uppercase font-title`}>
                     {reviews.title.split(' ').slice(0, -2).join(' ')} <br />
                     <span className="text-primary">
                         {reviews.title.split(' ').slice(-2).join(' ')}

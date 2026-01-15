@@ -9,6 +9,8 @@
   --color-primary-light: #fff;
   --color-secondary: #fff;
   --color-muted: #fff;
+  --font-title: var(--font-sans);
+  --font-regular: var(--font-serif);
 }
 
 /* 2. Configuración de los temas (Sobreescritura de variables) */
@@ -22,4 +24,19 @@
   --color-primary-light: #c4b5fd;
   --color-secondary: #6d28d9;
   --color-muted: #9ca3af;
+}
+
+[data-theme="yellow"] {
+  --color-background: #fde047;
+  --color-background-secondary: #18181b;
+  --color-foreground: #fff;
+  --color-primary: #000;
+  --color-primary-light: #27272a;
+  --color-secondary: #000;
+  --color-muted: #e7e5e4;
+}
+
+[data-font='barberiaUrbana'] {
+  --font-title: var(--font-anton);
+  --font-regular: var(--font-geist)
 }

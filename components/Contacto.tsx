@@ -20,7 +20,7 @@ export const Contacto = () => {
     return (
         <section
             id="contacto"
-            className="w-full relative z-10 py-20 overflow-hidden"
+            className="w-full relative z-10 py-20 overflow-hidden font-regular"
         >
             <div className="max-w-7xl mx-auto px-6 relative z-10">
 
@@ -29,7 +29,7 @@ export const Contacto = () => {
                     <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-3 block">
                         {contacto.badge}
                     </span>
-                    <h2 className={`text-[42px] md:text-5xl uppercase text-foreground mb-6 leading-none`}>
+                    <h2 className={`text-[42px] md:text-5xl uppercase text-foreground mb-6 leading-none font-title`}>
                         {contacto.title.split('\n')[0]} <span className="text-muted-foreground">&</span> <br />
                         <span className="text-primary">
                             {contacto.title.split('\n')[1]}
@@ -127,7 +127,7 @@ export const Contacto = () => {
                                     <MapPin className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <h4 className={`text-xl text-foreground uppercase mb-1`}>Ubicación</h4>
+                                    <h4 className={`text-xl text-foreground uppercase mb-1 font-title`}>Ubicación</h4>
                                     <p className="text-muted text-sm leading-relaxed">
                                         {contacto.direccion.calle || "Dirección no disponible"}<br />
                                         {contacto.direccion.cp} {contacto.direccion.municipyCity}
@@ -141,7 +141,7 @@ export const Contacto = () => {
                                     <Clock className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <h4 className={`text-xl text-foreground uppercase mb-1`}>Horario</h4>
+                                    <h4 className={`text-xl text-foreground uppercase mb-1 font-title`}>Horario</h4>
                                     <ul className="text-muted text-sm">
                                         {info.horario.entresemana && <li>{info.horario.entresemana}</li>}
                                         {info.horario.sabado && <li>{info.horario.sabado}</li>}
@@ -156,7 +156,7 @@ export const Contacto = () => {
                                     <Phone className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <h4 className={`text-xl text-foreground uppercase mb-1`}>Contacto</h4>
+                                    <h4 className={`text-xl text-foreground uppercase mb-1 font-title`}>Contacto</h4>
                                     <a href={`tel:${info.contacto.telefono.replace(/\s/g, '')}`} className="text-muted text-sm transition-colors block mb-3">
                                         {info.contacto.telefono}
                                     </a>

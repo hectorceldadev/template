@@ -127,7 +127,8 @@ export interface SiteConfig {
     }
     design: {
         background: 'barberia-urbana' | 'salon-de-belleza' | 'peluqueria-regular'
-        paleta: 'slate'
+        paleta: 'slate' | 'yellow'
+        typography: 'barberiaUrbana' | 'salonBelleza' | 'peluqueriaRegular' 
     }
 }
 
@@ -175,7 +176,7 @@ export const SITE_CONFIG: SiteConfig = {
         },
         ctaSecondary: {
             href: '/servicios',
-            text: 'Servicios',
+            text: 'Ver Servicios',
             icon: 'ArrowUpRight'
         },
         showSocialProof: true,
@@ -236,7 +237,7 @@ export const SITE_CONFIG: SiteConfig = {
         badge: 'PORTFOLIO',
         title: 'GALERIA',
         desc: '[DESCRIPCIÓN DE LA GALERIA]',
-        layout: 'grid',
+        layout: 'marquee',
         cta: {
             text: "VER TODA LA GALERÍA",
             href: "/galeria"
@@ -382,6 +383,7 @@ export const SITE_CONFIG: SiteConfig = {
     },
     design: {
         background: 'barberia-urbana',
-        paleta: 'slate'
+        paleta: 'yellow',
+        typography: 'barberiaUrbana'
     }
 }

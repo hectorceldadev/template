@@ -20,13 +20,13 @@ export const Footer = () => {
     const serviceLinks = servicios.items.slice(0, 4);
 
     return (
-        <footer className="bg-background-secondary border-t border-foreground/10 relative z-50 text-muted">
+        <footer className="bg-background-secondary border-t border-foreground/10 relative z-50 text-muted font-regular">
             <div className="max-w-7xl mx-auto px-6 py-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 md:ml-20 gap-12 mb-4">
 
                     {/* --- COLUMNA 1: BRANDING --- */}
                     <div className="md:col-span-1 space-y-4">
-                        <Link href="/" className={`text-[42px] font-extrabold tracking-tighter text-foreground relative z-101 block leading-none`}>
+                        <Link href="/" className={`text-[42px] font-extrabold tracking-tighter text-foreground relative z-101 block leading-none font-title`}>
                             {/* Intentamos separar el logo por espacio para colorear la 2da palabra */}
                             <span>{footer.logo.split(' ')[0]}</span>
                             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-primary/60">

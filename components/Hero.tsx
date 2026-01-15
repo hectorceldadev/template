@@ -27,10 +27,10 @@ const Hero = () => {
 
     return (
         <section
-            className={`pt-28 pb-16 px-5 lg:px-10 overflow-hidden`}
+            className={`pt-28 pb-16 px-5 lg:px-10 overflow-hidden font-regular`}
         >
             {/* Background Accent */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-100 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] md:w-[60%] h-100 bg-primary/30 rounded-full blur-2xl z-0 pointer-events-none" />
 
             <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -47,7 +47,7 @@ const Hero = () => {
                         </div>
 
                         {/* Título Dinámico */}
-                        <h1 className={`text-[56px] sm:text-6xl font-black text-foreground leading-[0.95] mb-6 uppercase tracking-tight`}>
+                        <h1 className={`text-[56px] sm:text-6xl font-title font-black text-foreground leading-[0.95] mb-6 uppercase tracking-tight`}>
                             {titleParts[0]} <br />
                             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-primary-light">
                                 {titleParts[1] || ""}
