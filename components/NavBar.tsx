@@ -87,7 +87,7 @@ export default function Navbar() {
                                   href={`/servicios/${service.slug}`}
                                   className="group/item flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5 transition-all"
                                 >
-                                  <div className="w-10 h-10 rounded-lg bg-background/50 border border-white/10 flex items-center justify-center text-foreground group-hover/item:text-primary group-hover/item:border-primary/30 transition-colors">
+                                  <div className="w-10 h-10 rounded-lg bg-background/50 border border-white/10 flex items-center justify-center text-primary group-hover/item:text-primary group-hover/item:border-primary/30 transition-colors">
                                     <Icon size={20} />
                                   </div>
                                   <div className="flex-1">

@@ -127,7 +127,7 @@ export interface SiteConfig {
     }
     design: {
         background: 'barberia-urbana' | 'salon-de-belleza' | 'peluqueria-regular'
-        paleta: 'slate' | 'yellow'
+        paleta: 'violet' | 'yellow' | 'green' | 'orange' | 'amber' | 'red' | 'lime' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' |'indigo' | 'purple' | 'fuchsia' | 'pink' | 'rose' | 'slate' | 'gray' | 'zinc' | 'neutral' | 'stone'
         typography: 'barberiaUrbana' | 'salonBelleza' | 'peluqueriaRegular' 
     }
 }
@@ -383,7 +383,7 @@ export const SITE_CONFIG: SiteConfig = {
     },
     design: {
         background: 'barberia-urbana',
-        paleta: 'yellow',
+        paleta: 'orange',
         typography: 'barberiaUrbana'
     }
 }
