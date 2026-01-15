@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react"
 import { SITE_CONFIG } from "@/config"
 
 const Galeria = () => {
-    const { galeria } = SITE_CONFIG;
+    const { galeria, design } = SITE_CONFIG;
     
     // Duplicamos imágenes para el efecto infinito si es marquee
     const displayImages = galeria.layout === 'marquee' 
@@ -21,7 +21,7 @@ const Galeria = () => {
                 <span className="text-secondary font-bold tracking-widest uppercase text-xs mb-2 block">
                     {galeria.badge}
                 </span>
-                <h2 className={`text-[42px] md:text-5xl text-foreground uppercase leading-none font-title`}>
+                <h2 className={`text-[42px] md:text-5xl text-foreground uppercase leading-none font-title font-semibold`}>
                     {galeria.title}
                 </h2>
                 <p className="text-muted mt-4 max-w-md">
@@ -34,11 +34,19 @@ const Galeria = () => {
                 // MODO MARQUEE
                 <div className="relative w-full z-20 mb-12">
                     {/* Gradient Masks */}
-                    <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-32 bg-linear-to-r from-background to-transparent z-30 pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-32 bg-linear-to-l from-background to-transparent z-30 pointer-events-none" />
+                    {
+                        design.background === 'salon-de-belleza' 
+                        ?
+                        ''
+                        : 
+                        <>
+                            <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-32 bg-linear-to-r from-background to-transparent z-30 pointer-events-none" />
+                            <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-32 bg-linear-to-l from-background to-transparent z-30 pointer-events-none" />
+                        </>
+                    }
 
-                    <div className="transform -rotate-1 py-4">
-                        <div className="bg-primary/5 border-y border-white/10 py-8 backdrop-blur-sm">
+                    <div className={`transform ${design.background === 'salon-de-belleza' ? '' : '-skew-y-2'} py-4`}>
+                        <div className={`${design.background === 'salon-de-belleza' ? '' : 'bg-primary/5 border-y border-white/10 py-8 backdrop-blur-sm'} `}>
                             <div className="flex gap-6 items-center w-max px-4 animate-marquee hover:[animation-play-state:paused]">
                                 {displayImages.slice(0, 4).map((imagen, index) => (
                                     <div
@@ -49,10 +57,10 @@ const Galeria = () => {
                                             src={imagen.src}
                                             alt={imagen.alt}
                                             fill
-                                            className="object-cover transition-transform duration-700 grayscale group-hover:grayscale-0 group-hover:scale-110"
+                                            className={`object-cover transition-transform duration-700 ${design.background === 'salon-de-belleza' ? '' : 'grayscale group-hover:grayscale-0'} group-hover:scale-110`}
                                             sizes="(max-width: 768px) 100vw, 300px"
                                         />
-                                        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                                        <div className={`absolute inset-0 bg-linear-to-t ${design.background === 'salon-de-belleza' ? 'from-foreground/30 via-foreground/10' : 'from-black/90 via-black/20'}  to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6`}>
                                             <div className="flex justify-between items-center">
                                                 <p className="text-foreground text-sm font-bold leading-tight line-clamp-2 pr-4">
                                                     {imagen.alt}
@@ -79,10 +87,10 @@ const Galeria = () => {
                                     src={imagen.src}
                                     alt={imagen.alt}
                                     fill
-                                    className="object-cover transition-transform duration-700 grayscale group-hover:grayscale-0 group-hover:scale-110"
+                                    className={`object-cover transition-transform duration-700 ${design.background === 'salon-de-belleza' ? '' : ' grayscale group-hover:grayscale-0'} group-hover:scale-110`}
                                     sizes="(max-width: 768px) 100vw, 400px"
                                 />
-                                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                                <div className={`absolute inset-0 bg-linear-to-t ${design.background === 'salon-de-belleza' ? 'from-foreground/30 via-foreground/10' : 'from-black/90 via-black/20'} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6`}>
                                     <div className="flex justify-between items-center">
                                         <p className="text-foreground text-sm font-bold leading-tight line-clamp-2 pr-4">
                                             {imagen.alt}

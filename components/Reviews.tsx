@@ -5,7 +5,7 @@ import { SITE_CONFIG } from "@/config"
 
 export const Reviews = () => {
     // 1. Extraemos config
-    const { reviews } = SITE_CONFIG;
+    const { reviews, design } = SITE_CONFIG;
 
     // 2. Duplicamos los items para el efecto marquee infinito
     // Si hay pocos items, los duplicamos varias veces para llenar la pantalla
@@ -19,7 +19,7 @@ export const Reviews = () => {
                 <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-3 block">
                     {reviews.badge}
                 </span>
-                <h2 className={`text-[42px] md:text-5xl text-foreground uppercase font-title`}>
+                <h2 className={`text-[42px] md:text-5xl text-foreground uppercase font-title leading-[0.95] font-semibold`}>
                     {reviews.title.split(' ').slice(0, -2).join(' ')} <br />
                     <span className="text-primary">
                         {reviews.title.split(' ').slice(-2).join(' ')}
@@ -31,11 +31,19 @@ export const Reviews = () => {
             </div>
 
             {/* --- SLIDER INFINITO (CSS ONLY) --- */}
-            <div className="relative w-full bg-primary/5 border-y border-foreground/10 py-10 backdrop-blur-sm transform">
+            <div className={`${design.background === 'salon-de-belleza' ? 'relative w-full' : 'relative w-full bg-primary/5 border-y border-foreground/10 py-10 backdrop-blur-sm transform'}`}>
                 
                 {/* Sombras laterales (Fade effect) */}
-                <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-background via-background/80 to-transparent z-20 pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-background via-background/80 to-transparent z-20 pointer-events-none" />
+                {
+                    design.background === 'salon-de-belleza' 
+                    ?
+                    ''
+                    :
+                    <>
+                        <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-background via-background/80 to-transparent z-20 pointer-events-none" />
+                        <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-background via-background/80 to-transparent z-20 pointer-events-none" />
+                    </>
+                }
 
                 {/* Contenedor Animado */}
                 <div className="flex gap-6 w-max px-4 animate-marquee hover:[animation-play-state:paused]">

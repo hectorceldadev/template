@@ -15,7 +15,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 const Hero = () => {
     // 2. Extraemos la data del Config
-    const { hero } = SITE_CONFIG;
+    const { hero, design } = SITE_CONFIG;
 
     // 3. Preparamos los datos
     // Separamos el título por el salto de línea '\n' definido en el config
@@ -30,7 +30,13 @@ const Hero = () => {
             className={`pt-28 pb-16 px-5 lg:px-10 overflow-hidden font-regular`}
         >
             {/* Background Accent */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] md:w-[60%] h-100 bg-primary/30 rounded-full blur-2xl z-0 pointer-events-none" />
+            {
+                design.background === 'salon-de-belleza'
+                ?
+                ''
+                : 
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] md:w-[60%] h-100 bg-primary/30 rounded-full blur-2xl z-0 pointer-events-none" />
+            }
 
             <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -40,7 +46,7 @@ const Hero = () => {
 
                         {/* Badge / Ubicación */}
                         <div className="flex justify-start">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full border border-primary/30 bg-primary/10 text-primary-light text-[10px] sm:text-xs font-bold tracking-widest uppercase">
+                            <div className={`inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full border ${design.background === 'salon-de-belleza' ? 'border-primary/60 bg-primary/5 text-primary' : 'border-primary/30 bg-primary/10 text-primary-light'}  text-[10px] sm:text-xs font-bold tracking-widest uppercase`}>
                                 <MapPin size={12} className="text-primary" />
                                 {hero.badge}
                             </div>
@@ -111,7 +117,7 @@ const Hero = () => {
                     {/* --- COLUMNA IMAGEN --- */}
                     <div className="relative mx-auto w-[90%] lg:w-[70%] mt-4 lg:pt-2">
                         {/* Decoración */}
-                        <div className="absolute -inset-4 bg-primary/20 rounded-3xl rotate-6 blur-xl hidden sm:block"></div>
+                        <div className="absolute -inset-4 bg-primary/20 rounded-3xl rotate-6 blur-3xl hidden sm:block"></div>
 
                         <div className="relative aspect-3/4 rounded-2xl overflow-hidden grayscale border border-foreground/10 bg-background shadow-2xl shadow-background/60">
                             {/* IMAGEN DEL CONFIG */}

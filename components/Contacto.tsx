@@ -29,7 +29,7 @@ export const Contacto = () => {
                     <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-3 block">
                         {contacto.badge}
                     </span>
-                    <h2 className={`text-[42px] md:text-5xl uppercase text-foreground mb-6 leading-none font-title`}>
+                    <h2 className={`text-[42px] md:text-5xl uppercase text-foreground mb-6 font-title leading-[0.95] font-semibold`}>
                         {contacto.title.split('\n')[0]} <span className="text-muted-foreground">&</span> <br />
                         <span className="text-primary">
                             {contacto.title.split('\n')[1]}

@@ -25,7 +25,7 @@ const Servicios = () => {
 
                 {/* --- HEADER SECCIÓN --- */}
                 <div className="mb-16">
-                    <h2 className={`text-[42px] md:text-5xl text-foreground uppercase mb-4 font-title`}>
+                    <h2 className={`text-[42px] md:text-5xl leading-[0.95] font-semibold text-foreground uppercase mb-4 font-title`}>
                         {servicios.title.split(' ')[0]} <br />
                         <span className="text-primary">{servicios.title.split(' ').slice(1).join(' ')}</span>
                     </h2>
@@ -63,7 +63,7 @@ const Servicios = () => {
 
                                     {/* Título y Precio */}
                                     <div className="flex justify-between items-baseline mb-3">
-                                        <h3 className={`text-2xl text-foreground uppercase tracking-wide font-title`}>
+                                        <h3 className={`text-2xl text-foreground uppercase tracking-wide font-title font-semibold`}>
                                             {service.title}
                                         </h3>
                                         {service.price && (

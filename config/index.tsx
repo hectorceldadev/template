@@ -127,7 +127,8 @@ export interface SiteConfig {
     }
     design: {
         background: 'barberia-urbana' | 'salon-de-belleza' | 'peluqueria-regular'
-        paleta: 'violet' | 'yellow' | 'green' | 'orange' | 'amber' | 'red' | 'lime' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' |'indigo' | 'purple' | 'fuchsia' | 'pink' | 'rose' | 'slate' | 'gray' | 'zinc' | 'neutral' | 'stone'
+        paleta: 'violet' | 'yellow' | 'green' | 'orange' | 'amber' | 'red' | 'lime' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' |'indigo' | 'purple' | 'fuchsia' | 'pink' | 'rose' | 'slate' | 'gray' | 'zinc' | 'neutral' | 'stone' | 
+        /* SALON DE BELLEZA */'nude' | 'nude-rose' | 'lavender' | 'sage' | 'matcha' | 'glacial' | 'ocean' | 'latte' |'blush' | 'mauve' | 'peach'
         typography: 'barberiaUrbana' | 'salonBelleza' | 'peluqueriaRegular' 
     }
 }
@@ -382,8 +383,8 @@ export const SITE_CONFIG: SiteConfig = {
         copyright: '[AÑO - NOMBRE]'
     },
     design: {
-        background: 'barberia-urbana',
-        paleta: 'orange',
-        typography: 'barberiaUrbana'
+        background: 'salon-de-belleza',
+        paleta: 'lavender',
+        typography: 'salonBelleza'
     }
 }
