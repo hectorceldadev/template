@@ -5,6 +5,7 @@ import BackgroundSelector from "@/components/backgrounds/BackgroundSelector";
 import { Anton, Geist, Lato, Open_Sans, Oswald, Playfair_Display } from "next/font/google";
 import { SITE_CONFIG } from "@/config";
 import { Metadata } from "next";
+import JsonLd from "@/components/schema/JsonLd";
 
 const { metadataInfo } = SITE_CONFIG
 
@@ -84,6 +85,7 @@ export default function RootLayout({
         data-theme={SITE_CONFIG.design.paleta}
         data-font={SITE_CONFIG.design.typography}
       >
+        <JsonLd />
         <BackgroundSelector >
           <Navbar />
           {children}

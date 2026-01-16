@@ -24,6 +24,26 @@ export interface SiteConfig {
             ]
         }
     }
+    schemaInfo: {
+        businessType: 'HairSalon' | 'BeautySalon'
+        address: {
+            street: string
+            city: string
+            postalCode: string
+            country: string
+        }
+        geo: {
+            latitude: number
+            longitude: number
+        }
+        areaServed: string[]
+        priceRange: string // Ej: "$", "$$", "$$$"
+        openingHours: Array<{
+            days: string[] // Ej: ['Monday', 'Tuesday']
+            opens: string
+            closes: string
+        }>
+    }
     navBar: {
         logo: {
             textOrImage: string
@@ -235,6 +255,41 @@ export const SITE_CONFIG: SiteConfig = {
                 }
             ]
         }
+    },
+    schemaInfo: {
+        businessType: 'HairSalon', //**AJUSTAR SI ES SALON DE BELLEZA O PELUQUERIA */
+        address: { //** MODIFICAR A DIRECCION
+            street: 'Calle Ejemplo 123',
+            city: 'Valencia',
+            postalCode: '46000',
+            country: 'ES'
+        },
+        geo: {
+            //** */ Importante para salir en "Cerca de mí" en Google Maps
+            latitude: 39.4699, 
+            longitude: -0.3763
+        },
+        areaServed: [
+            "[PUEBLO CERCANO]",
+            "[PUEBLO CERCANO]",
+            "[PUEBLO CERCANO]",
+            "[PUEBLO CERCANO]",
+            "[PUEBLO CERCANO]",
+            "[PUEBLO CERCANO]",
+        ],
+        priceRange: '€€',
+        openingHours: [ //**CONFIGURAR HORARIOS */
+            {
+                days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                opens: '10:00',
+                closes: '20:00'
+            },
+            {
+                days: ['Saturday'],
+                opens: '10:00',
+                closes: '14:00'
+            }
+        ]
     },
     navBar: {
         logo: {
