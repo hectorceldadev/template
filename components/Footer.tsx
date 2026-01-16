@@ -47,7 +47,7 @@ export const Footer = () => {
                                         key={i}
                                         href={social.href}
                                         target="_blank"
-                                        className="w-10 h-10 rounded-full bg-background ring-1 ring-foreground/10 flex items-center justify-center text-muted-foreground hover:ring-primary hover:text-primary transition-all"
+                                        className="w-10 h-10 rounded-full bg-background ring-1 ring-foreground/10 flex items-center justify-center text-muted-foreground hover:ring-primary text-primary transition-all"
                                     >
                                         <Icon size={20} />
                                     </Link>
@@ -59,7 +59,7 @@ export const Footer = () => {
                     {/* --- COLUMNA 2: NAVEGACIÓN (EXPLORA) --- */}
                     {footer.navSections.map((section, idx) => (
                         <div key={idx}>
-                            <h4 className="font-bold text-foreground mb-2 uppercase tracking-wide">{section.title}</h4>
+                            <h4 className="font-bold text-primary mb-2 uppercase tracking-wide">{section.title}</h4>
                             <ul className="space-y-4 text-sm">
                                 {section.items.map((item, i) => {
                                     if (item.href === '/') return
@@ -77,7 +77,7 @@ export const Footer = () => {
 
                     {/* --- COLUMNA 3: SERVICIOS DESTACADOS (AUTOMÁTICA) --- */}
                     <div>
-                        <h4 className="font-bold text-foreground mb-2 uppercase tracking-wide">Servicios</h4>
+                        <h4 className="font-bold text-primary mb-2 uppercase tracking-wide">Servicios</h4>
                         <ul className="space-y-4 text-sm">
                             {serviceLinks.map((service, i) => (
                                 <li key={i}>

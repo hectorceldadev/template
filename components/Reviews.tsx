@@ -46,7 +46,7 @@ export const Reviews = () => {
                 }
 
                 {/* Contenedor Animado */}
-                <div className="flex gap-6 w-max px-4 animate-marquee hover:[animation-play-state:paused]">
+                <div className="flex gap-6 w-max px-4">
                     {marqueeReviews.map((review, i) => (
                         <div
                             key={`${i}-${review.user}`}

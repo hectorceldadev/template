@@ -47,13 +47,18 @@ export interface SiteConfig {
             price: string
             slug: string
             features: string[]
+            duracion: string
         }>
+    }
+    servicioEspecifico: {
+        queIncluyeFooter: string
     }
     galeria: {
         badge: string
         title: string
         desc: string
         layout: 'marquee' | 'grid',
+        layoutOnPage: 'marquee' | 'grid',
         cta: {
             text: string
             href: string
@@ -125,11 +130,44 @@ export interface SiteConfig {
         }>
         copyright: string
     }
+    sobreNosotros: {
+        // --- SECCIÓN 1: HISTORIA ---
+        badge: string
+        title: {
+            normal: string
+            highlight: string
+        }
+        desc: {
+            part1: string
+            part2: string
+        }
+        quote: string
+        image: string
+        // --- SECCIÓN 2: STATS ---
+        stats: Array<{
+            label: string
+            value: number
+            suffix: string
+            icon: string
+        }>
+        // --- SECCIÓN 3: TEAM ---
+        teamTitle: {
+            normal: string
+            highlight: string
+        }
+        teamDesc: string
+        team: Array<{
+            id: number,
+            name: string,
+            role: string,
+            image: string,
+        }>
+    }
     design: {
         background: 'barberia-urbana' | 'salon-de-belleza' | 'peluqueria-regular' | 'CrossBackground' | 'HexBackground' | 'WaveBackground'
-        paleta: 'violet' | 'yellow' | 'green' | 'orange' | 'amber' | 'red' | 'lime' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' |'indigo' | 'purple' | 'fuchsia' | 'pink' | 'rose' | 'slate' | 'gray' | 'zinc' | 'neutral' | 'stone' | 
-        /* SALON DE BELLEZA */'nude' | 'nude-rose' | 'lavender' | 'sage' | 'matcha' | 'glacial' | 'ocean' | 'latte' |'blush' | 'mauve' | 'peach' 
-        typography: 'barberiaUrbana' | 'salonBelleza' | 'peluqueriaRegular' 
+        paleta: 'violet' | 'yellow' | 'green' | 'orange' | 'amber' | 'red' | 'lime' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' | 'indigo' | 'purple' | 'fuchsia' | 'pink' | 'rose' | 'slate' | 'gray' | 'zinc' | 'neutral' | 'stone' |
+        /* SALON DE BELLEZA */'nude' | 'nude-rose' | 'lavender' | 'sage' | 'matcha' | 'glacial' | 'ocean' | 'latte' | 'blush' | 'mauve' | 'peach'
+        typography: 'barberiaUrbana' | 'salonBelleza' | 'peluqueriaRegular'
     }
 }
 
@@ -162,7 +200,7 @@ export const SITE_CONFIG: SiteConfig = {
             },
         ],
         cta: {
-            text: '[RESERVAR CITA]',
+            text: 'RESERVAR CITA',
             href: 'https://wa.me/[34Número de teléfono]?text=Hola%20[Nombre del negocio]%quería%20reservar%cita'
         }
     },
@@ -193,52 +231,82 @@ export const SITE_CONFIG: SiteConfig = {
         },
         items: [
             {
-                id: '[slug-servicio]',
+                id: '[servicio1]',
                 title: '[Servicio 1]',
                 desc: '[Servicio 1 Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
                 fullDesc: '[Servicio 1 Full Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
                 icon: 'Scissors',
                 price: '15€',
                 slug: 'slug-servicio', //** Colocar slug */
-                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo']
+                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo'],
+                duracion: '30M'
             },
             {
-                id: '[slug-servicio]',
+                id: '[servicio2]',
                 title: '[Servicio 1]',
                 desc: '[Servicio 1 Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
                 fullDesc: '[Servicio 1 Full Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
                 icon: 'Scissors',
                 price: '15€',
                 slug: 'slug-servicio', //** Colocar slug */
-                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo']
+                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo'],
+                duracion: '30M'
             },
             {
-                id: '[slug-servicio]',
+                id: '[servicio3]',
                 title: '[Servicio 1]',
                 desc: '[Servicio 1 Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
                 fullDesc: '[Servicio 1 Full Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
                 icon: 'Scissors',
                 price: '15€',
                 slug: 'slug-servicio', //** Colocar slug */
-                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo']
+                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo'],
+                duracion: '30M'
             },
             {
-                id: '[slug-servicio]',
+                id: '[servicio4]',
                 title: '[Servicio 1]',
                 desc: '[Servicio 1 Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
                 fullDesc: '[Servicio 1 Full Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
                 icon: 'Scissors',
                 price: '15€',
                 slug: 'slug-servicio', //** Colocar slug */
-                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo']
+                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo'],
+                duracion: '30M'
+            },
+            {
+                id: '[servicio5]',
+                title: '[Servicio 1]',
+                desc: '[Servicio 1 Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
+                fullDesc: '[Servicio 1 Full Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
+                icon: 'Scissors',
+                price: '15€',
+                slug: 'slug-servicio', //** Colocar slug */
+                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo'],
+                duracion: '30M'
+            },
+            {
+                id: '[servicio6]',
+                title: '[Servicio 1]',
+                desc: '[Servicio 1 Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
+                fullDesc: '[Servicio 1 Full Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
+                icon: 'Scissors',
+                price: '15€',
+                slug: 'slug-servicio', //** Colocar slug */
+                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo'],
+                duracion: '30M'
             },
         ]
+    },
+    servicioEspecifico: {
+        queIncluyeFooter: 'ej: [Celda Barber • Silla, Valencia]'
     },
     galeria: {
         badge: 'PORTFOLIO',
         title: 'GALERIA',
         desc: '[DESCRIPCIÓN DE LA GALERIA]',
         layout: 'marquee',
+        layoutOnPage: 'grid',
         cta: {
             text: "VER TODA LA GALERÍA",
             href: "/galeria"
@@ -326,8 +394,8 @@ export const SITE_CONFIG: SiteConfig = {
         ]
     },
     contacto: {
-        badge: "[GET IN TOUCH]",
-        title: "[Reserva & \nContacto]", // Usamos \n para el salto de línea
+        badge: "GET IN TOUCH",
+        title: "Reserva \nContacto", // Usamos \n para el salto de línea
         desc: "[DESCRIPCIÓN CONTACTO] ej: Estamos en el corazón de la ciudad listos para cambiar tu imagen. Reserva tu cita o escríbenos.",
         formAction: "https://formspree.io/f/[tu-codigo-aqui]",
         mapEmbedUrl: "[https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3083...]",
@@ -382,9 +450,54 @@ export const SITE_CONFIG: SiteConfig = {
         ],
         copyright: '[AÑO - NOMBRE]'
     },
-    design: {
-        background: 'salon-de-belleza',
-        paleta: 'green',
-        typography: 'salonBelleza'
+    sobreNosotros: {
+        badge: "Desde 2025",
+        title: {
+            normal: "Más que una",
+            highlight: "Barbería"
+        },
+        desc: {
+            part1: "[Celda Barber nació en las calles de Silla con una misión clara: romper con lo clásico. No buscábamos ser otra peluquería más, queríamos crear un espacio de peluquería renovado.[",
+            part2: "[Entendemos el corte de pelo como una forma de expresión. Ya sea un Low Fade pulido o un diseño Freestyle agresivo, nuestro objetivo es que tu imagen hable por ti antes de que tú digas una palabra.]"
+        },
+        quote: "[Precisión milimétrica, ambiente acogedor y trato de familia. Eso es lo que somos.]",
+        image: "/images/[imagen-local].webp",
+        stats: [ //* AJUSTAR
+            { label: "Años de Experiencia", value: 1, suffix: "+", icon: 'Trophy' },
+            { label: "Clientes Satisfechos", value: 1000, suffix: "+", icon: 'Users' },
+            { label: "Cortes Realizados", value: 2000, suffix: "", icon: 'Scissors' },
+            { label: "Valoración Google", value: 4.9, suffix: "/5", icon: 'Star' },
+        ],
+        teamTitle: {
+            normal: "NUESTRO",
+            highlight: "EQUIPO"
+        },
+        // AQUÍ ESTÁ EL CAMBIO: Simplificado a un único texto editable
+        teamDesc: 'Conoce a los artistas detrás de las navajas. Especialistas en cortes modernos y comprometidos con brindarte el mejor servicio posible.',
+        team: [
+            {
+                id: 1,
+                name: "ej: Álvaro Celda",
+                role: "ej: Founder & CEO",
+                image: "/images/sobreNosotros/[nombre-foto].webp",
+            },
+            {
+                id: 2,
+                name: "[Nombre]",
+                role: "[ROL]",
+                image: "/images/sobreNosotros/[nombre-foto].webp",
+            },
+            {
+                id: 3,
+                name: "[Nombre]",
+                role: "[ROL]",
+                image: "/images/sobreNosotros/[nombre-foto].webp",
+            },
+        ],
+    },
+    design: { 
+        background: 'HexBackground',
+        paleta: 'cyan',
+        typography: 'barberiaUrbana'
     }
 }

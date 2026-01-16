@@ -1,6 +1,5 @@
 'use client'
 
-import Link from "next/link"
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { SITE_CONFIG } from "@/config"
@@ -9,7 +8,7 @@ const Galeria = () => {
     const { galeria, design } = SITE_CONFIG;
     
     // Duplicamos imágenes para el efecto infinito si es marquee
-    const displayImages = galeria.layout === 'marquee' 
+    const displayImages = galeria.layoutOnPage === 'marquee' 
         ? [...galeria.images, ...galeria.images] 
         : galeria.images;
 
@@ -30,7 +29,7 @@ const Galeria = () => {
             </div>
 
             {/* --- CONTENIDO --- */}
-            {galeria.layout === 'marquee' ? (
+            {galeria.layoutOnPage === 'marquee' ? (
                 // MODO MARQUEE
                 <div className="relative w-full z-20 mb-12">
                     {/* Gradient Masks */}
@@ -47,7 +46,7 @@ const Galeria = () => {
 
                     <div className={`transform ${design.background === 'salon-de-belleza' ? '' : '-skew-y-2'} py-4`}>
                         <div className={`${design.background === 'salon-de-belleza' ? '' : 'bg-primary/5 border-y border-white/10 py-8 backdrop-blur-sm'} `}>
-                            <div className="flex gap-6 items-center w-max px-4 animate-marquee-right hover:[animation-play-state:paused]">
+                            <div className="flex gap-6 items-center w-max px-4 animate-marquee hover:[animation-play-state:paused]">
                                 {displayImages.map((imagen, index) => (
                                     <div
                                         key={`marquee-${index}`}
@@ -78,7 +77,7 @@ const Galeria = () => {
                 // MODO GRID
                 <div className="max-w-7xl mx-auto px-5 lg:px-10 mb-12">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                        {galeria.images.slice(0, 3).map((imagen, index) => (
+                        {galeria.images.map((imagen, index) => (
                             <div
                                 key={`grid-${index}`}
                                 className="group relative aspect-square rounded-2xl overflow-hidden border border-foreground/10 bg-background-secondary transition-all duration-300 hover:border-primary/50"
@@ -103,19 +102,6 @@ const Galeria = () => {
                     </div>
                 </div>
             )}
-
-            {/* --- CTA BUTTON --- */}
-            <div className="flex justify-center relative z-20">
-                <Link
-                    href={galeria.cta.href}
-                    className="group w-full sm:w-auto mx-5 rounded-xl ring-1 ring-foreground/10 bg-primary px-8 py-4 text-foreground transition-all hover:bg-primary/90 hover:ring-primary/50 active:scale-95"
-                >
-                    <div className="flex items-center justify-center gap-1 font-bold uppercase tracking-wide text-sm sm:text-base">
-                        {galeria.cta.text}
-                        <ArrowUpRight className="w-5 h-5 relative transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 text-foreground" />
-                    </div>
-                </Link>
-            </div>
 
         </section>
     )
