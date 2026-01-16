@@ -19,7 +19,7 @@ const Servicios = () => {
     const { servicios } = SITE_CONFIG;
 
     return (
-        <section className="relative pt-26 pb-10 overflow-hidden font-regular">
+        <section className="relative pt-12 pb-10 overflow-hidden font-regular">
 
             <div className="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 pt-10">
 

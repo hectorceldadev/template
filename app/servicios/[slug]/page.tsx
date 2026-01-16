@@ -6,12 +6,28 @@ interface ServicioProps {
     params: Promise<{ slug: string }>
 }
 
-const { servicios } = SITE_CONFIG
+const { servicios, metadataInfo } = SITE_CONFIG
 
 export const generateStaticParams = async () => {
     return servicios.items.map(service => ({
         slug: service.slug
     }))
+}
+
+export const generateMetadata = async ({ params }: ServicioProps) => {
+
+    const { slug } = await params
+
+    const servicio = servicios.items.find(item => item.slug === slug)
+
+    if (!servicio) return { title: 'Servicio no encontrado' }
+
+    return {
+        title: `${servicio.title} | [NOMBRE] Peluquería en [PUEBLO]`,
+        description: servicio.desc,
+        keywords: [ servicio.title, ,metadataInfo.keywords ],
+    }
+
 }
 
 const page = async ({ params }: ServicioProps) => {

@@ -1,4 +1,29 @@
 export interface SiteConfig {
+    metadataInfo: {
+        title: {
+            default: string
+            template: string
+        }
+        description: string
+        siteUrl: string 
+        keywords: string[]
+        openGraph: {
+            title: string,
+            description: string
+            url: string
+            siteName: string
+            locale: string
+            type: string
+            images: [
+              {
+                url: string
+                width: 1200,
+                height: 630,
+                alt: string
+              }
+            ]
+        }
+    }
     navBar: {
         logo: {
             textOrImage: string
@@ -31,6 +56,10 @@ export interface SiteConfig {
         image: string
     }
     servicios: {
+        metadata: {
+            title: string
+            description: string
+        }
         title: string
         desc: string
         ctaPrimary: {
@@ -54,6 +83,10 @@ export interface SiteConfig {
         queIncluyeFooter: string
     }
     galeria: {
+        metadata: {
+            title: string
+            description: string
+        }
         badge: string
         title: string
         desc: string
@@ -81,10 +114,15 @@ export interface SiteConfig {
         }>
     }
     contacto: {
+        metadata: {
+            title: string
+            description: string
+        }
         badge: string
         title: string
         desc: string
         formAction: string
+        formOptions: string[]
         mapEmbedUrl: string
         direccion: {
             calle: string
@@ -131,7 +169,10 @@ export interface SiteConfig {
         copyright: string
     }
     sobreNosotros: {
-        // --- SECCIÓN 1: HISTORIA ---
+        metadata: {
+            title: string
+            description: string
+        }
         badge: string
         title: {
             normal: string
@@ -143,14 +184,12 @@ export interface SiteConfig {
         }
         quote: string
         image: string
-        // --- SECCIÓN 2: STATS ---
         stats: Array<{
             label: string
             value: number
             suffix: string
             icon: string
         }>
-        // --- SECCIÓN 3: TEAM ---
         teamTitle: {
             normal: string
             highlight: string
@@ -172,6 +211,31 @@ export interface SiteConfig {
 }
 
 export const SITE_CONFIG: SiteConfig = {
+    metadataInfo: {
+        title: {
+            default: '[NOMBRE] | [Peluquería en [PUEBLO]]',
+            template: '%s | [[NOMBRE] Peluquería en [PUEBLO]]' // %s se sustituye por el nombre de la página (ej: "Servicios")
+        },
+        description: 'Tu peluquería referencia en [PUEBLO]. Especialistas [ESPECIFICAMOS SEGÚN NEGOCIO] Reserva tu cita aquí ->.',
+        siteUrl: 'https://tunegocioeninternet.es', //** */ Pon aquí el dominio real cuando lo tengas
+        keywords: ['peluquería en [PUEBLO]', 'barbería', 'estilismo', 'corte unisex', 'tinte orgánico'],
+        openGraph: {
+            title: "[NOMBRE] | Peluquería en [PUEBLO]",
+            description: "[ej: Cortes Fades, arreglos de barba y el mejor ambiente]. Reserva tu cita en [PUEBLO].",
+            url: "https://[DOMINIO].es",
+            siteName: "[NOMBRE]",
+            locale: "es_ES",
+            type: "website",
+            images: [
+                {
+                    url: "/images/metadata/open-graph.png", //*COLOCAR IMAGEN
+                    width: 1200,
+                    height: 630,
+                    alt: "[NOMBRE] - Peluquería en [PUEBLO]",
+                }
+            ]
+        }
+    },
     navBar: {
         logo: {
             textOrImage: '[LOGO]',
@@ -222,6 +286,10 @@ export const SITE_CONFIG: SiteConfig = {
         image: '/',
     },
     servicios: {
+        metadata: {
+            title: 'Nuestros Servicios | [NOMBRE] Peluquería en [PUEBLO]',
+            description: 'Descubre todos nuestros servicos en [NOMBRE], estamos en [DIRECCION ej: Calle...]'
+        },
         title: 'NUESTROS SERVICIOS',
         desc: '[DESCRIPCIÓN] ej: No hacemos cortes estándar. Analizamos tu cráneo y facciones para darte el estilo que mejor te sienta. Precisión milimétrica.',
         ctaPrimary: {
@@ -302,6 +370,10 @@ export const SITE_CONFIG: SiteConfig = {
         queIncluyeFooter: 'ej: [Celda Barber • Silla, Valencia]'
     },
     galeria: {
+        metadata: {
+            title: 'Galeria | [NOMBRE] Peluquería en [PUEBLO]',
+            description: '[EJ: Echa un vistazo a nuestros mejores trabajos. Encuentranos en [DIRECCIÓN: ej: Calle Andres 14, Alzira Valencia ]]. Reserva tu cita aquí ->' 
+        },
         badge: 'PORTFOLIO',
         title: 'GALERIA',
         desc: '[DESCRIPCIÓN DE LA GALERIA]',
@@ -394,15 +466,26 @@ export const SITE_CONFIG: SiteConfig = {
         ]
     },
     contacto: {
+        metadata: {
+          title: 'Reservar Cita | [NOMBRE] Peluquería en [PUEBLO]',
+          description: 'Te esperamos anisosos en [NOMBRE], encuentranos en [DIRECCIÓN ej: Calle...]. Reserva tu cita aquí ->'  
+        },
         badge: "GET IN TOUCH",
         title: "Reserva \nContacto", // Usamos \n para el salto de línea
-        desc: "[DESCRIPCIÓN CONTACTO] ej: Estamos en el corazón de la ciudad listos para cambiar tu imagen. Reserva tu cita o escríbenos.",
+        desc: "[DESCRIPCIÓN CONTACTO] ej: Estamos en el corazón de la ciudad listos para cambiar tu imagen. Reserva tu cita o escríbenos. Reserva tu cita aquí ->",
         formAction: "https://formspree.io/f/[tu-codigo-aqui]",
+        formOptions: [
+            "[Corte de Pelo]",
+            "[Arreglo de Barba]",
+            "[Tinte / Color]",
+            "[Pack Completo]",
+            "[Consulta / Otros]"
+        ],
         mapEmbedUrl: "[https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3083...]",
         direccion: {
-            calle: 'C/Local Numero Local 23',
+            calle: '[C/Local Numero Local 23]',
             cp: 46600,
-            municipyCity: 'Alzira, Valencia'
+            municipyCity: '[Alzira, Valencia]'
         },
         info: {
             horario: {
@@ -451,6 +534,10 @@ export const SITE_CONFIG: SiteConfig = {
         copyright: '[AÑO - NOMBRE]'
     },
     sobreNosotros: {
+        metadata: {
+            title: 'Sobre Nosotros | [NOMBRE] Peluquería en [PUEBLO]',
+            description: 'Conoce quien hay detras de [NOMBRE], somos un equipo comprometido en sacar tu mejor versión, encuentranos en [DIRECCION ej: Calle...]. Reserva tu cita aquí ->'
+        },
         badge: "Desde 2025",
         title: {
             normal: "Más que una",
@@ -495,9 +582,9 @@ export const SITE_CONFIG: SiteConfig = {
             },
         ],
     },
-    design: { 
-        background: 'HexBackground',
-        paleta: 'cyan',
+    design: {
+        background: 'barberia-urbana',
+        paleta: 'yellow',
         typography: 'barberiaUrbana'
     }
 }

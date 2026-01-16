@@ -81,12 +81,11 @@ export const Contacto = () => {
                                             name='Servicio'
                                             className="w-full px-5 py-4 rounded-xl bg-background border border-foreground/10 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none cursor-pointer"
                                         >
-                                            <option className="bg-secondary/30">Corte Urban & Fade</option>{/* //*CAMBIAR OPCIONES*/}
-                                            <option className="bg-secondary/30">Barba & Perfilado</option>{/* //*CAMBIAR OPCIONES*/}
-                                            <option className="bg-secondary/30">Diseños Freestyle</option>{/* //*CAMBIAR OPCIONES*/}
-                                            <option className="bg-secondary/30">Pack Completo</option>{/* //*CAMBIAR OPCIONES*/}
-                                            <option className="bg-secondary/30">Otro / Consulta</option>{/* //*CAMBIAR OPCIONES*/}
-                                        </select>
+                                            {contacto.formOptions.map((opcion, index) => (
+                                                <option key={index} value={opcion} className="bg-background text-foreground">
+                                                    {opcion}
+                                                </option>
+                                            ))}                                        </select>
                                         {/* Flecha custom */}
                                         <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none opacity-50 text-foreground">
                                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
@@ -190,7 +189,7 @@ export const Contacto = () => {
                                 >
                                 </iframe>
                                 {/* Overlay para que no sea tan brillante si el filtro CSS falla en algunos navegadores */}
-                                
+
                             </div>
                         </div>
 

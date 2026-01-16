@@ -4,6 +4,30 @@ import { Footer } from "@/components/Footer";
 import BackgroundSelector from "@/components/backgrounds/BackgroundSelector";
 import { Anton, Geist, Lato, Open_Sans, Oswald, Playfair_Display } from "next/font/google";
 import { SITE_CONFIG } from "@/config";
+import { Metadata } from "next";
+
+const { metadataInfo } = SITE_CONFIG
+
+export const metadata: Metadata = {
+  title: metadataInfo.title.default, 
+  description: metadataInfo.description,
+  metadataBase: new URL(metadataInfo.siteUrl),
+  keywords: metadataInfo.keywords,
+  openGraph: {
+    title: metadataInfo.openGraph.title,
+    description: metadataInfo.openGraph.description,
+    url: metadataInfo.openGraph.url, 
+    siteName: metadataInfo.openGraph.siteName,
+    locale: metadataInfo.openGraph.locale,
+    type: metadataInfo.openGraph.type,
+    images: metadataInfo.openGraph.images.map(image => ({
+        url: image.url,
+        width: image.width,
+        height: image.height,
+        alt: image.alt,
+    }))
+  }
+}
 
 const anton = Anton({
   subsets: ['latin'],

@@ -27,16 +27,10 @@ const Hero = () => {
 
     return (
         <section
-            className={`pt-28 pb-16 px-5 lg:px-10 overflow-hidden font-regular`}
+            className={`pt-28 pb-8 px-5 lg:px-10 overflow-hidden font-regular`}
         >
             {/* Background Accent */}
-            {
-                design.background === 'salon-de-belleza' || 'peluqueria-regular'
-                ?
-                ''
-                : 
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] md:w-[60%] h-100 bg-primary/30 rounded-full blur-2xl z-0 pointer-events-none" />
-            }
+            <div className={`${design.background === 'salon-de-belleza' ? '' : 'absolute top-4 left-1/2 -translate-x-1/2 w-[50%] md:w-[60%] h-100 bg-primary/30 rounded-full blur-3xl z-0 pointer-events-none'}`} />
 
             <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
