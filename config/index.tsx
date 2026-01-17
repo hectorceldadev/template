@@ -73,7 +73,7 @@ export interface SiteConfig {
             text: string
         }
         showSocialProof: boolean
-        image: string
+        image: '/images/home/salon-belleza-hero.webp' | '/images/home/barberia-urbana-hero.webp' | '/images/home/peluqueria-hero.webp'
     }
     servicios: {
         metadata: {
@@ -338,7 +338,7 @@ export const SITE_CONFIG: SiteConfig = {
             icon: 'ArrowUpRight'
         },
         showSocialProof: true,
-        image: '/',
+        image: "/images/salon-belleza-hero.webp",
     },
     servicios: {
         metadata: {
