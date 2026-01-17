@@ -419,6 +419,28 @@ export const SITE_CONFIG: SiteConfig = {
                 features: ['Asesoramiento de imagen', 'Peinado con cera/polvo'],
                 duracion: '30M'
             },
+            {
+                id: '[servicio7]',
+                title: '[Servicio 1]',
+                desc: '[Servicio 1 Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
+                fullDesc: '[Servicio 1 Full Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
+                icon: 'Scissors',
+                price: '15€',
+                slug: 'slug-servicio', //** Colocar slug */
+                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo'],
+                duracion: '30M'
+            },
+            {
+                id: '[servicio8]',
+                title: '[Servicio 1]',
+                desc: '[Servicio 1 Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
+                fullDesc: '[Servicio 1 Full Descripción] ej:Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes Más que un afeitado, perfilado geométrico o natural según tu facción a navaja y arreglo de volúmenes',
+                icon: 'Scissors',
+                price: '15€',
+                slug: 'slug-servicio', //** Colocar slug */
+                features: ['Asesoramiento de imagen', 'Peinado con cera/polvo'],
+                duracion: '30M'
+            },
         ]
     },
     servicioEspecifico: {
@@ -432,7 +454,7 @@ export const SITE_CONFIG: SiteConfig = {
         badge: 'PORTFOLIO',
         title: 'GALERIA',
         desc: '[DESCRIPCIÓN DE LA GALERIA]',
-        layout: 'marquee',
+        layout: 'grid',
         layoutOnPage: 'grid',
         cta: {
             text: "VER TODA LA GALERÍA",
@@ -638,8 +660,8 @@ export const SITE_CONFIG: SiteConfig = {
         ],
     },
     design: {
-        background: 'barberia-urbana',
-        paleta: 'yellow',
-        typography: 'barberiaUrbana'
+        background: 'salon-de-belleza',
+        paleta: 'pink',
+        typography: 'salonBelleza'
     }
 }

@@ -3,9 +3,7 @@
 import Link from 'next/link'
 import { Scissors, User, Zap, Star, ArrowUpRight, LucideIcon, Check } from 'lucide-react'
 import { SITE_CONFIG } from '@/config'
-// Si no tienes las fuentes, borra esta línea
 
-// 1. Diccionario de Iconos
 const iconMap: Record<string, LucideIcon> = {
     Scissors: Scissors,
     User: User,
@@ -15,7 +13,7 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 const Servicios = () => {
-    // 2. Extraemos la config
+    
     const { servicios } = SITE_CONFIG;
 
     return (
@@ -24,7 +22,7 @@ const Servicios = () => {
             <div className="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 pt-10">
 
                 {/* --- HEADER SECCIÓN --- */}
-                <div className="mb-16">
+                <div className="mb-16 stagger-container">
                     <h2 className={`text-[42px] md:text-5xl leading-[0.95] font-semibold text-foreground uppercase mb-4 font-title`}>
                         {servicios.title.split(' ')[0]} <br />
                         <span className="text-primary">{servicios.title.split(' ').slice(1).join(' ')}</span>
@@ -35,7 +33,7 @@ const Servicios = () => {
                 </div>
 
                 {/* --- GRID DE SERVICIOS (Máximo 4 en Home) --- */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 stagger-container">
                     {servicios.items.map((service, i) => {
                         const Icon = iconMap[service.icon] || Scissors;
 

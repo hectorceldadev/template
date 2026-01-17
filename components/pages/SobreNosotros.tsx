@@ -1,12 +1,20 @@
 'use client'
 
 import { SITE_CONFIG } from '@/config'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 import { Scissors, Users, Trophy, Star, LucideIcon } from 'lucide-react'
 import Image from 'next/image'
+import { useRef } from 'react'
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 export const SobreNosotros = () => {
     
     const { sobreNosotros } = SITE_CONFIG
+
+    const containerRef = useRef<HTMLDivElement | null>(null)
     
     const duplicatedStats = [...sobreNosotros.stats, ...sobreNosotros.stats, ...sobreNosotros.stats, ...sobreNosotros.stats]
 
@@ -17,6 +25,36 @@ export const SobreNosotros = () => {
         Star: Star
     } 
 
+    useGSAP(() => {
+
+        gsap.from('.animate-header', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6, 
+            stagger: 0.2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+        
+        gsap.from('.animate-content', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6, 
+            stagger: 0.2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.animate-content',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+
+    }, { scope: containerRef })
+
     return (
         <section className={`w-full py-24 relative overflow-hidden font-regular`}>
             <div className="max-w-7xl mx-auto w-full flex flex-col relative z-10">
@@ -24,7 +62,7 @@ export const SobreNosotros = () => {
                 {/* --- SECCIÓN 1: HISTORIA VS IMAGEN --- */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 mt-8 mb-10 items-center gap-12 lg:gap-20">
 
-                    <div className="col-span-1 mx-6 md:mx-14">
+                    <div className="col-span-1 mx-6 md:mx-14 stagger-container">
                         <span className="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">
                             {sobreNosotros.badge}
                         </span>
@@ -46,9 +84,9 @@ export const SobreNosotros = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-1">
+                    <div className="col-span-1 stagger-container">
                         {/* Centramos la imagen horizontalmente en su columna */}
-                        <div className="relative aspect-4/5 w-[90%] md:w-[70%] mx-auto rounded-3xl overflow-hidden border border-foreground/10 group">
+                        <div className="relative aspect-4/5 w-[80%] md:w-[65%] mx-auto rounded-3xl overflow-hidden bg-background-secondary border border-foreground/20 group">
                             <Image
                                 src={sobreNosotros.image}
                                 alt="Imagen Sobre Nosotros"
@@ -88,18 +126,20 @@ export const SobreNosotros = () => {
                 </div>
 
                 {/* --- SECCIÓN 3: TEAM --- */}
-                <div className="flex flex-col justify-start items-start px-6 pt-40 ">
+                <div
+                    ref={containerRef} 
+                    className="flex flex-col justify-start items-start px-6 pt-40 ">
                     <div className="mb-16">
-                        <h2 className={`text-[42px] md:text-5xl text-foreground uppercase font-title font-semibold`}>
+                        <h2 className={`text-[42px] md:text-5xl text-foreground uppercase font-title leading-[0.95] font-semibold animate-header`}>
                             {sobreNosotros.teamTitle.normal} <br /><span className="text-primary">{sobreNosotros.teamTitle.highlight}</span>
                         </h2>
-                        <p className="text-zinc-400 mt-4 max-w-lg mx-auto md:mx-0">
+                        <p className="text-zinc-400 mt-4 max-w-lg mx-auto md:mx-0 animate-header">
                             {sobreNosotros.teamDesc}
                         </p>
                     </div>
                     <div className={`grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-8 w-full`}>
                         {sobreNosotros.team.map((member) => (
-                            <div key={member.id} className="group col-span-1 flex justify-center items-center relative">
+                            <div key={member.id} className="group col-span-1 flex justify-center items-center relative animate-content">
                                 <div className="aspect-2/3 w-72 transition-all duration-300 group-hover:scale-102 cursor-pointer relative rounded-2xl overflow-hidden bg-background-secondary border border-foreground/20">
                                     <Image
                                         src={member.image}

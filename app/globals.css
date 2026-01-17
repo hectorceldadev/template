@@ -12,18 +12,6 @@
   --font-title: var(--font-sans);
   --font-regular: var(--font-serif);
   --animate-aparecer: aparecer 2s ease-out both;
-  --animate-autoshow: autoshow both view();
-}
-
-@keyframes autoshow {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @keyframes aparecer {
@@ -47,36 +35,11 @@
 .stagger-container > *:nth-child(4) { animation-delay: 400ms; }
 .stagger-container > *:nth-child(5) { animation-delay: 500ms; }
 .stagger-container > *:nth-child(6) { animation-delay: 600ms; }
+.stagger-container > *:nth-child(7) { animation-delay: 700ms; }
+.stagger-container > *:nth-child(8) { animation-delay: 800ms; }
+.stagger-container > *:nth-child(9) { animation-delay: 900ms; }
 
-@layer utilities {
-  /* ESTADO INICIAL (Oculto) */
-  .reveal-hidden {
-    opacity: 0;
-    /* 1. Bajamos la distancia a 24px (más sutil) */
-    /* 2. Añadimos scale(0.96) para dar profundidad */
-    transform: translateY(40px);
-    
-    /* 3. Definimos la transición de SALIDA (cuando haces scroll hacia arriba) */
-    /* Usamos 'ease-in' para que empiece lento y acelere al desaparecer */
-    transition: all 0.5s ease-out;
-    
-    /* Opcional: un poco de blur mejora mucho la suavidad */
-  }
 
-  /* ESTADO FINAL (Visible) */
-  .reveal-visible {
-    opacity: 1;
-    transform: translateY(0);
-    
-    /* 4. Definimos la transición de ENTRADA */
-    /* Esta curva hace un frenado muy suave al final (elegante) */
-    transition: all 0.9s ease-out;
-  }
-}
-
-/* 2. Configuración de los temas (Sobreescritura de variables) */
-
-/* Tema: Slate (Por defecto) */
 [data-theme="violet"] {
   --color-background: #020617;
   --color-background-secondary: #18181b;

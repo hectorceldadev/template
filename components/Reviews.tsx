@@ -2,30 +2,55 @@
 
 import { Star, Quote, User } from "lucide-react"
 import { SITE_CONFIG } from "@/config"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useRef } from "react"
+import { useGSAP } from "@gsap/react"
+
+gsap.registerPlugin(ScrollTrigger)
 
 export const Reviews = () => {
-    // 1. Extraemos config
+
     const { reviews, design } = SITE_CONFIG;
 
-    // 2. Duplicamos los items para el efecto marquee infinito
-    // Si hay pocos items, los duplicamos varias veces para llenar la pantalla
+    const containerRef = useRef<HTMLElement | null>(null)
+
     const marqueeReviews = [...reviews.items, ...reviews.items, ...reviews.items].slice(0, 12); 
 
+    useGSAP(() => {
+
+        gsap.from('.animate-header', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6, 
+            stagger: 0.2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+
+    }, { scope: containerRef })
+
     return (
-        <section className="w-full z-10 py-10 overflow-hidden relative font-regular">
+        <section
+            ref={containerRef} 
+            className="w-full z-10 py-10 overflow-hidden relative font-regular">
             
             {/* --- CABECERA --- */}
             <div className="max-w-7xl mx-auto px-5 lg:px-10 mb-16">
-                <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-3 block">
+                <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-3 block animate-header">
                     {reviews.badge}
                 </span>
-                <h2 className={`text-[42px] md:text-5xl text-foreground uppercase font-title leading-[0.95] font-semibold`}>
+                <h2 className={`text-[42px] md:text-5xl text-foreground uppercase font-title leading-[0.95] font-semibold animate-header`}>
                     {reviews.title.split(' ').slice(0, -2).join(' ')} <br />
                     <span className="text-primary">
                         {reviews.title.split(' ').slice(-2).join(' ')}
                     </span>
                 </h2>
-                <p className="text-muted mt-4 max-w-md">
+                <p className="text-muted mt-4 max-w-md animate-header">
                     {reviews.desc}
                 </p>
             </div>

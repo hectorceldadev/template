@@ -7,7 +7,6 @@ import { SITE_CONFIG } from "@/config"
 const Galeria = () => {
     const { galeria, design } = SITE_CONFIG;
     
-    // Duplicamos imágenes para el efecto infinito si es marquee
     const displayImages = galeria.layoutOnPage === 'marquee' 
         ? [...galeria.images, ...galeria.images] 
         : galeria.images;
@@ -16,7 +15,7 @@ const Galeria = () => {
         <section className="w-full py-10 overflow-hidden relative font-regular">
 
             {/* --- CABECERA --- */}
-            <div className="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 mb-12">
+            <div className="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 mb-12 stagger-container">
                 <span className="text-secondary font-bold tracking-widest uppercase text-xs mb-2 block">
                     {galeria.badge}
                 </span>
@@ -46,7 +45,7 @@ const Galeria = () => {
 
                     <div className={`transform ${design.background === 'salon-de-belleza' ? '' : '-skew-y-2'} py-4`}>
                         <div className={`${design.background === 'salon-de-belleza' ? '' : 'bg-primary/5 border-y border-white/10 py-8 backdrop-blur-sm'} `}>
-                            <div className="flex gap-6 items-center w-max px-4 animate-marquee hover:[animation-play-state:paused]">
+                            <div className="flex gap-6 items-center w-max px-4 animate-marquee hover:[animation-play-state:paused] stagger-container">
                                 {displayImages.map((imagen, index) => (
                                     <div
                                         key={`marquee-${index}`}
@@ -76,7 +75,7 @@ const Galeria = () => {
             ) : (
                 // MODO GRID
                 <div className="max-w-7xl mx-auto px-5 lg:px-10 mb-12">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 stagger-container">
                         {galeria.images.map((imagen, index) => (
                             <div
                                 key={`grid-${index}`}

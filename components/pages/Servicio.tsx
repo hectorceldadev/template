@@ -3,6 +3,12 @@
 import Link from 'next/link'
 import { ArrowUpRight, CalendarDays, Check, LucideIcon, Scissors } from 'lucide-react'
 import { SITE_CONFIG } from '@/config'
+import { useGSAP } from '@gsap/react'
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 interface Props {
     servicio: {
@@ -25,6 +31,8 @@ const iconsMap: Record<string, LucideIcon> = { //**HACER ICONS */
 export const Servicio = ({ servicio }: Props) => {
 
     const { servicios, servicioEspecifico } = SITE_CONFIG
+    
+    const containerRef = useRef<HTMLDivElement | null>(null)
 
     const viewMore = () => {
         return servicios.items.filter(item => item.slug === servicio.slug ).sort(() => Math.random() - 0.5).slice(0,3)
@@ -34,20 +42,48 @@ export const Servicio = ({ servicio }: Props) => {
 
     const Icon = iconsMap[servicio.icon]
 
+    useGSAP(() => {
+
+        gsap.from('.animate-header', {
+            y: 40,
+            opacity: 0,
+            duration: 0.4, 
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+
+        gsap.from('.animate-content', {
+            y: 40,
+            opacity: 0,
+            duration: 0.8, 
+            ease: 'power2.out',
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: '.animate-content',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+
+    }, { scope: containerRef })
+
     return (
         <div    
             className="min-h-screen w-full relative font-regular"
         >
-
             {/* Spotlight Decorativo */}
-            <div className="absolute top-0 right-0 w-150 h-150 bg-primary/10 rounded-full blur-[150px] pointer-events-none z-10" />
+            <div className="absolute top-0 right-0 w-100 h-100 bg-primary/10 rounded-full blur-[150px] pointer-events-none z-10" />
 
             <div className={`max-w-7xl mx-auto px-6 md:px-10 pt-30 relative z-20 w-full`}>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start stagger-container">
 
                     {/* COLUMNA IZQUIERDA: Info Principal */}
-                    <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-6 stagger-container">
                         {/* Icono Grande */}
                         <div className="w-20 h-20 rounded-2xl bg-background-secondary border border-foreground/10 flex items-center justify-center text-primary shadow-[0_0_30px_rgba(124,58,237,0.15)]">
                             {/* Clonamos el icono para hacerlo más grande */}
@@ -61,7 +97,7 @@ export const Servicio = ({ servicio }: Props) => {
                         </h1>
 
                         <div className="flex items-center gap-4">
-                            <span className="text-2xl font-bold text-primary-light font-title">
+                            <span className="text-2xl font-bold text-primary font-title">
                                 {servicio.price}
                             </span>
                             <span className="px-3 py-1 rounded-full border border-foreground text-muted text-xs font-bold uppercase tracking-wide">
@@ -87,7 +123,7 @@ export const Servicio = ({ servicio }: Props) => {
                     </div>
 
                     {/* COLUMNA DERECHA: Detalles Técnicos (Features) */}
-                    <div className="bg-background-secondary backdrop-blur-md border border-foreground/10 rounded-3xl p-8 lg:mt-10 md:p-10 relative overflow-hidden">
+                    <div className="bg-background-secondary backdrop-blur-md border border-foreground/10 rounded-3xl p-8 lg:mt-10 md:p-10 relative overflow-hidden stagger-container">
 
                         {/* Decoración sutil */}
                         <div className="absolute top-0 right-0 p-6 opacity-20">
@@ -124,8 +160,10 @@ export const Servicio = ({ servicio }: Props) => {
                     </div>
 
                 </div>
-                <div className='py-20'>
-                    <h3 className={`text-foreground uppercase text-[42px] md:text-5xl  font-title`}>
+                <div
+                    ref={containerRef} 
+                    className='py-20'>
+                    <h3 className={`text-foreground uppercase text-[42px] md:text-5xl font-title leading-[0.95] animate-header`}>
                         También te <br /><span className='text-primary'>puede interesar</span>
                     </h3>
                     <div className={`grid grid-cols-1 gap-6 md:grid-cols-3 pt-10`}>
@@ -134,7 +172,7 @@ export const Servicio = ({ servicio }: Props) => {
                                 <Link
                             href={`/servicios/${servicio.slug}`}
                             key={servicio.id}
-                            className="group service active:scale-95 relative p-6 rounded-2xl bg-background-secondary ring ring-foreground/20 hover:border-primary/50 transition-colors duration-300 hover:bg-background-secondary/80"
+                            className="group service active:scale-95 relative z-50 p-6 rounded-2xl bg-background-secondary ring ring-foreground/20 hover:border-primary/50 transition-colors duration-300 hover:bg-background-secondary/80 animate-content"
                         >
                             {/* Efecto Glow en Hover */}
                             <div className="absolute inset-0 bg-primary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -156,7 +194,7 @@ export const Servicio = ({ servicio }: Props) => {
                                         {servicio.title}
                                     </h3>
                                     {servicio.price && (
-                                        <span className="text-xl font-bold text-primary-light font-title">
+                                        <span className="text-xl font-bold text-primary font-title">
                                             {servicio.price}
                                         </span>
                                     )}

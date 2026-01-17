@@ -3,13 +3,18 @@
 import Link from 'next/link'
 import { MapPin, Phone, Clock, Send, Instagram, Smartphone, type LucideIcon } from 'lucide-react'
 import { SITE_CONFIG } from '@/config'
+import gsap from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useGSAP } from '@gsap/react'
+import { useRef } from 'react'
 
-// Diccionario de Iconos
+gsap.registerPlugin(ScrollTrigger)
+
 const iconMap: Record<string, LucideIcon> = {
     Instagram: Instagram,
     Phone: Phone,
     Smartphone: Smartphone,
-    // Añade más si usas otros en tu config
+    //* AÑADIR ICONOS NECESARIOS
 };
 
 export const Contacto = () => {
@@ -17,25 +22,58 @@ export const Contacto = () => {
     const { contacto } = SITE_CONFIG;
     const { info } = contacto;
 
+    const containerRef = useRef<HTMLElement | null>(null)
+
+    useGSAP(() => {
+
+        gsap.from('.animate-header', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+
+        gsap.from('.animate-content', {
+            y: 40,
+            opacity: 0,
+            duration: 0.4,
+            stagger: 0.2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.animate-content',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+
+    }, { scope: containerRef })
+
     return (
         <section
+            ref={containerRef}
             id="contacto"
             className="w-full relative z-10 py-20 overflow-hidden font-regular"
         >
             <div className="max-w-7xl mx-auto px-6 relative z-10">
 
                 {/* --- CABECERA --- */}
-                <div className="mb-16 md:mb-24 md:text-left">
-                    <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-3 block">
+                <div className="mb-16 md:text-left">
+                    <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-3 block animate-header">
                         {contacto.badge}
                     </span>
-                    <h2 className={`text-[42px] md:text-5xl uppercase text-foreground mb-6 font-title leading-[0.95] font-semibold`}>
+                    <h2 className={`text-[42px] md:text-5xl uppercase text-foreground mb-6 font-title leading-[0.95] font-semibold animate-header`}>
                         {contacto.title.split('\n')[0]} <span className="text-muted-foreground">&</span> <br />
                         <span className="text-primary">
                             {contacto.title.split('\n')[1]}
                         </span>
                     </h2>
-                    <p className="text-muted text-lg max-w-xl">
+                    <p className="text-muted text-lg max-w-xl animate-header">
                         {contacto.desc}
                     </p>
                 </div>
@@ -44,7 +82,7 @@ export const Contacto = () => {
 
                     {/* --- LADO IZQUIERDO: FORMULARIO --- */}
                     <div className="lg:col-span-2">
-                        <div className="bg-background-secondary ring-1 ring-foreground/10 hover:ring-primary/20 transition-colors duration-300 p-8 md:p-10 rounded-3xl relative overflow-hidden group">
+                        <div className="bg-background-secondary ring-1 ring-foreground/10 hover:ring-primary/20 transition-colors duration-300 p-8 md:p-10 rounded-3xl relative overflow-hidden group animate-content">
 
                             <form
                                 method='POST'
@@ -115,7 +153,7 @@ export const Contacto = () => {
                     </div>
 
                     {/* --- LADO DERECHO: INFO Y MAPA --- */}
-                    <div className="lg:col-span-1 flex flex-col gap-4">
+                    <div className="lg:col-span-1 flex flex-col gap-4 animate-content">
 
                         {/* Tarjeta de Info */}
                         <div className="bg-background-secondary ring-1 ring-foreground/10 hover:ring-primary/30 transition-colors duration-300 p-6 rounded-3xl space-y-4.5">

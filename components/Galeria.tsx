@@ -4,27 +4,68 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { SITE_CONFIG } from "@/config"
+import { useGSAP } from "@gsap/react"
+import { useRef } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Galeria = () => {
+
     const { galeria, design } = SITE_CONFIG;
     
+    const containerRef = useRef<HTMLElement | null>(null)
+
     // Duplicamos imágenes para el efecto infinito si es marquee
     const displayImages = galeria.layout === 'marquee' 
         ? [...galeria.images, ...galeria.images] 
         : galeria.images;
 
+    useGSAP(() => {
+
+        gsap.from('.animate-header', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6, 
+            stagger: 0.2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+        
+        gsap.from('.animate-content', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6, 
+            stagger: 0.2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.animate-content',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+        
+    }, { scope: containerRef })
+
     return (
-        <section className="w-full py-10 overflow-hidden relative font-regular animate-autoshow">
+        <section 
+            ref={containerRef}
+            className="w-full py-10 overflow-hidden relative font-regular">
 
             {/* --- CABECERA --- */}
             <div className="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 mb-12">
-                <span className="text-secondary font-bold tracking-widest uppercase text-xs mb-2 block">
+                <span className="text-secondary font-bold tracking-widest uppercase text-xs mb-2 block animate-header">
                     {galeria.badge}
                 </span>
-                <h2 className={`text-[42px] md:text-5xl text-foreground uppercase leading-none font-title font-semibold`}>
+                <h2 className={`text-[42px] md:text-5xl text-foreground uppercase leading-none font-title font-semibold animate-header`}>
                     {galeria.title}
                 </h2>
-                <p className="text-muted mt-4 max-w-md">
+                <p className="text-muted mt-4 max-w-md animate-header">
                     {galeria.desc}
                 </p>
             </div>
@@ -81,7 +122,7 @@ const Galeria = () => {
                         {galeria.images.slice(0, 3).map((imagen, index) => (
                             <div
                                 key={`grid-${index}`}
-                                className="group relative aspect-square rounded-2xl overflow-hidden border border-foreground/10 bg-background-secondary transition-all duration-300 hover:border-primary/50"
+                                className="group relative aspect-square rounded-2xl overflow-hidden border border-foreground/10 bg-background-secondary transition-colors duration-300 hover:border-primary/50 animate-content"
                             >
                                 <Image
                                     src={imagen.src}
@@ -105,7 +146,7 @@ const Galeria = () => {
             )}
 
             {/* --- CTA BUTTON --- */}
-            <div className="flex justify-center relative z-20">
+            <div className="flex justify-center relative z-20 animate-content">
                 <Link
                     href={galeria.cta.href}
                     className="group w-full sm:w-auto mx-5 rounded-xl ring-1 ring-foreground/10 bg-primary px-8 py-4 text-foreground transition-all hover:bg-primary/90 hover:ring-primary/50 active:scale-95"
