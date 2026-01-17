@@ -14,7 +14,7 @@ const Galeria = () => {
         : galeria.images;
 
     return (
-        <section className="w-full py-10 overflow-hidden relative font-regular">
+        <section className="w-full py-10 overflow-hidden relative font-regular animate-autoshow">
 
             {/* --- CABECERA --- */}
             <div className="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 mb-12">

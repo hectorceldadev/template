@@ -30,13 +30,13 @@ const Hero = () => {
             className={`pt-28 pb-8 px-5 lg:px-10 overflow-hidden font-regular`}
         >
             {/* Background Accent */}
-            <div className={`${design.background === 'salon-de-belleza' ? '' : 'absolute top-4 left-1/2 -translate-x-1/2 w-[50%] md:w-[60%] h-100 bg-primary/30 rounded-full blur-3xl z-0 pointer-events-none'}`} />
+            <div className={`${design.background === 'salon-de-belleza' ? '' : 'absolute top-4 left-1/2 -translate-x-1/2 w-[50%] md:w-[60%] h-100 bg-primary/10 rounded-full blur-3xl z-0 pointer-events-none'}`} />
 
             <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center stagger-container">
 
                     {/* --- COLUMNA TEXTO --- */}
-                    <div className="flex flex-col">
+                    <div className="stagger-container flex flex-col">
 
                         {/* Badge / Ubicación */}
                         <div className="flex justify-start">
@@ -91,7 +91,13 @@ const Hero = () => {
                             <div className="mt-10 sm:mt-12 flex items-center justify-start gap-4">
                                 <div className="flex -space-x-4">
                                     {[1, 2, 3, 4].map((i) => (
-                                        <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-foreground/20 bg-primary/80 flex items-center justify-center overflow-hidden relative transition-all z-0 hover:z-10 hover:scale-110">
+                                        <div 
+                                            key={i} 
+                                            className="animate-aparecer w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-foreground/20 bg-primary/80 flex items-center justify-center overflow-hidden relative transition-all z-0 hover:z-10 hover:scale-110"
+                                            style={{
+                                                animationDelay: `${i * 100}ms`
+                                            }}
+                                        >
                                             <User className="text-foreground w-5 h-5 sm:w-6 sm:h-6" />
                                         </div>
                                     ))}

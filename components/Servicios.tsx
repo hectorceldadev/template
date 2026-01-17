@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Scissors, User, Zap, Star, ArrowUpRight, LucideIcon, Check } from 'lucide-react'
 import { SITE_CONFIG } from '@/config'
-// Si no tienes las fuentes, borra esta línea
+import { useScrollTrigger } from '@/hooks/useScrollTrigger';
 
 // 1. Diccionario de Iconos
 const iconMap: Record<string, LucideIcon> = {
@@ -16,10 +16,14 @@ const iconMap: Record<string, LucideIcon> = {
 
 const Servicios = () => {
     // 2. Extraemos la config
+    const { ref, isVisible } = useScrollTrigger(25)
+
     const { servicios } = SITE_CONFIG;
 
     return (
-        <section className="relative pt-12 pb-10 overflow-hidden font-regular">
+        <section
+            ref={ref}  
+            className={`relative pt-12 pb-10 overflow-hidden font-regular ${isVisible ? 'reveal-visible' : 'reveal-hidden'}`}>
 
             <div className="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 pt-10">
 
