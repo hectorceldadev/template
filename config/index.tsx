@@ -454,8 +454,8 @@ export const SITE_CONFIG: SiteConfig = {
         badge: 'PORTFOLIO',
         title: 'GALERIA',
         desc: '[DESCRIPCIÓN DE LA GALERIA]',
-        layout: 'grid',
-        layoutOnPage: 'grid',
+        layout: 'marquee',
+        layoutOnPage: 'marquee',
         cta: {
             text: "VER TODA LA GALERÍA",
             href: "/galeria"
@@ -661,7 +661,7 @@ export const SITE_CONFIG: SiteConfig = {
     },
     design: {
         background: 'salon-de-belleza',
-        paleta: 'pink',
+        paleta: 'peach',
         typography: 'salonBelleza'
     }
 }

@@ -6,6 +6,7 @@ import { Anton, Geist, Lato, Open_Sans, Oswald, Playfair_Display } from "next/fo
 import { SITE_CONFIG } from "@/config";
 import { Metadata } from "next";
 import JsonLd from "@/components/schema/JsonLd";
+import SmoothScrolling from "@/components/SmoothScrolling";
 
 const { metadataInfo } = SITE_CONFIG
 
@@ -86,11 +87,13 @@ export default function RootLayout({
         data-font={SITE_CONFIG.design.typography}
       >
         <JsonLd />
-        <BackgroundSelector >
-          <Navbar />
-          {children}
-          <Footer />
-        </BackgroundSelector>
+          <BackgroundSelector >
+            <Navbar />
+              <SmoothScrolling>
+                {children}
+              </SmoothScrolling>
+            <Footer />
+          </BackgroundSelector>
       </body>
     </html>
   );

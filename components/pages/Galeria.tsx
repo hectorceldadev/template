@@ -44,12 +44,12 @@ const Galeria = () => {
                     }
 
                     <div className={`transform ${design.background === 'salon-de-belleza' ? '' : '-skew-y-2'} py-4`}>
-                        <div className={`${design.background === 'salon-de-belleza' ? '' : 'bg-primary/5 border-y border-white/10 py-8 backdrop-blur-sm'} `}>
+                        <div className={`bg-primary/5 border-y border-foreground/20 py-8 backdrop-blur-sm`}>
                             <div className="flex gap-6 items-center w-max px-4 animate-marquee hover:[animation-play-state:paused] stagger-container">
                                 {displayImages.map((imagen, index) => (
                                     <div
                                         key={`marquee-${index}`}
-                                        className="group relative w-72 h-96 shrink-0 rounded-2xl overflow-hidden border border-foreground/10 bg-background-secondary transition-all duration-500 hover:scale-105 hover:border-primary/50 cursor-pointer"
+                                        className="group relative w-62 h-86 shrink-0 rounded-2xl overflow-hidden border border-foreground/10 bg-background-secondary transition-all duration-500 hover:scale-105 hover:border-primary/50 cursor-pointer"
                                     >
                                         <Image
                                             src={imagen.src}

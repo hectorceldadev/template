@@ -85,7 +85,7 @@ export const Servicio = ({ servicio }: Props) => {
                     {/* COLUMNA IZQUIERDA: Info Principal */}
                     <div className="flex flex-col gap-6 stagger-container">
                         {/* Icono Grande */}
-                        <div className="w-20 h-20 rounded-2xl bg-background-secondary border border-foreground/10 flex items-center justify-center text-primary shadow-[0_0_30px_rgba(124,58,237,0.15)]">
+                        <div className="w-20 h-20 rounded-2xl bg-background-secondary border border-foreground/10 flex items-center justify-center text-primary">
                             {/* Clonamos el icono para hacerlo más grande */}
                             <div className="scale-150">
                                 <Icon />
@@ -114,7 +114,7 @@ export const Servicio = ({ servicio }: Props) => {
                             <Link
                                 href={``} //* COLOCAR ENLACE RESERVA WHATSAPP
                                 target="_blank"
-                                className="flex-1 bg-primary hover:bg-primary/80 text-foreground px-8 py-4 rounded-xl font-bold uppercase tracking-wider flex items-center justify-center gap-3 transition-all shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] active:scale-95"
+                                className="flex-1 bg-primary hover:bg-primary/80 text-foreground px-8 py-4 rounded-xl font-bold uppercase tracking-wider flex items-center justify-center gap-3 transition-all active:scale-95"
                             >
                                 <CalendarDays className="w-5 h-5" />
                                 Reservar Cita

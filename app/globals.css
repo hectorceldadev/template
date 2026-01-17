@@ -12,6 +12,16 @@
   --font-title: var(--font-sans);
   --font-regular: var(--font-serif);
   --animate-aparecer: aparecer 2s ease-out both;
+  --animate-marquee: marquee 80s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-100%);
+  }
 }
 
 @keyframes aparecer {
@@ -383,4 +393,25 @@
 [data-font='peluqueriaRegular'] {
   --font-title: var(--font-oswald); 
   --font-regular: var(--font-opensans); 
+}
+
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important; /* Forza a quitar el scroll nativo si existiera */
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
