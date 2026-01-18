@@ -133,7 +133,7 @@ const Servicios = () => {
                                                 ))
                                             }
                                         </div>
-                                        <ArrowUpRight className='w-6 h-6 text-foreground group-hover:text-primary group-hover:translate-x-1 transition-colors duration-300' />
+                                        <ArrowUpRight className='w-6 h-6 text-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300' />
                                     </div>
                                 </div>
                             </Link>

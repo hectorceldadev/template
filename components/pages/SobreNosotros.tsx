@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { Scissors, Users, Trophy, Star, LucideIcon } from 'lucide-react'
 import Image from 'next/image'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -14,7 +14,11 @@ export const SobreNosotros = () => {
     
     const { sobreNosotros } = SITE_CONFIG
 
+    const [ isPaused, setIsPaused ] = useState<boolean>(false)
+
     const containerRef = useRef<HTMLDivElement | null>(null)
+    const sliderRef = useRef<HTMLDivElement | null>(null)
+    const animationRef = useRef<gsap.core.Tween | null>(null)
     
     const duplicatedStats = [...sobreNosotros.stats, ...sobreNosotros.stats, ...sobreNosotros.stats, ...sobreNosotros.stats]
 
@@ -54,6 +58,44 @@ export const SobreNosotros = () => {
         })
 
     }, { scope: containerRef })
+
+    useGSAP(() => {
+
+        if (!sliderRef.current) return
+
+        animationRef.current =
+            gsap.to(sliderRef.current, {
+                xPercent: -50,
+                duration: 20,
+                ease: 'none',
+                repeat: -1,
+                paused: true
+            })
+
+        ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: 'top 100%',
+            end: 'bottom 0%',
+            onEnter: () => animationRef.current?.play(),
+            onLeave: () => animationRef.current?.pause(),
+            onEnterBack: () => animationRef.current?.play(),
+            onLeaveBack: () => animationRef.current?.pause()
+        })
+
+        return () => {
+            animationRef.current?.kill()
+            ScrollTrigger.getAll().forEach(t => t.kill())
+        }
+
+    }, { scope: sliderRef })
+
+    useGSAP(() => {
+
+        if (animationRef.current) {
+            isPaused ? animationRef.current.timeScale(0.2) : animationRef.current.timeScale(1)
+        }
+
+    }, [isPaused])
 
     return (
         <section className={`w-full py-24 relative overflow-hidden font-regular`}>
@@ -104,13 +146,16 @@ export const SobreNosotros = () => {
                     className={`w-max relative shrink-0 whitespace-nowrap bg-primary/10 border-y border-foreground/20 py-4 backdrop-blur-sm -skew-2 transition-transform duration-500`}
                 >
                     <div
+                        ref={sliderRef}
+                        onMouseEnter={() => setIsPaused(true)}
+                        onMouseLeave={() => setIsPaused(false)}
                         className="flex w-max gap-8 overflow-hidden animate-marquee"
                     >
                         {duplicatedStats.map((stat, idx) => {
                             const Icon = iconsMap[stat.icon] || Star
                             return (
                                 <div key={idx} className="bg-background-secondary shrink-0 whitespace-nowrap border w-60 border-foreground/20 p-6 rounded-2xl text-center hover:bg-background-secondary/90 transition-colors group font-title">
-                                    <div className="inline-flex p-3 rounded-full bg-foreground/10 text-violet-500 mb-4 group-hover:scale-110 transition-transform">
+                                    <div className="inline-flex p-3 rounded-full bg-foreground/10 ring ring-foreground/20 text-primary mb-4 group-hover:scale-110 transition-transform">
                                         <Icon size={24} />
                                     </div>
                                     <h3 className={`text-4xl md:text-5xl text-foreground mb-2`}>

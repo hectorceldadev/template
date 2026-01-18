@@ -92,7 +92,7 @@ export const Servicio = ({ servicio }: Props) => {
                             </div>
                         </div>
 
-                        <h1 className={`text-[42px] md:text-5xl text-foreground uppercase leading-none font-title`}>
+                        <h1 className={`text-[42px] md:text-5xl text-foreground uppercase font-semibold leading-none font-title`}>
                             {servicio.title}
                         </h1>
 
@@ -130,7 +130,7 @@ export const Servicio = ({ servicio }: Props) => {
                             <div className="w-24 h-24 border-t-2 border-r-2 border-primary rounded-tr-3xl" />
                         </div>
 
-                        <h3 className={`text-2xl text-foreground uppercase mb-8  font-title`}>
+                        <h3 className={`text-2xl text-foreground uppercase mb-8 font-semibold font-title`}>
                             ¿Qué incluye?
                         </h3>
 
@@ -163,7 +163,7 @@ export const Servicio = ({ servicio }: Props) => {
                 <div
                     ref={containerRef} 
                     className='py-20'>
-                    <h3 className={`text-foreground uppercase text-[42px] md:text-5xl font-title leading-[0.95] animate-header`}>
+                    <h3 className={`text-foreground uppercase text-[42px] md:text-5xl font-title font-semibold leading-[0.95] animate-header`}>
                         También te <br /><span className='text-primary'>puede interesar</span>
                     </h3>
                     <div className={`grid grid-cols-1 gap-6 md:grid-cols-3 pt-10`}>
@@ -190,7 +190,7 @@ export const Servicio = ({ servicio }: Props) => {
 
                                 {/* Título y Precio */}
                                 <div className="flex justify-between items-baseline mb-3">
-                                    <h3 className={`text-2xl text-foreground uppercase tracking-wide font-title`}>
+                                    <h3 className={`text-2xl text-foreground uppercase tracking-wide font-title font-semibold`}>
                                         {servicio.title}
                                     </h3>
                                     {servicio.price && (

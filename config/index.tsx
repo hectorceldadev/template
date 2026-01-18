@@ -5,7 +5,7 @@ export interface SiteConfig {
             template: string
         }
         description: string
-        siteUrl: string 
+        siteUrl: string
         keywords: string[]
         openGraph: {
             title: string,
@@ -15,12 +15,12 @@ export interface SiteConfig {
             locale: string
             type: string
             images: [
-              {
-                url: string
-                width: 1200,
-                height: 630,
-                alt: string
-              }
+                {
+                    url: string
+                    width: 1200,
+                    height: 630,
+                    alt: string
+                }
             ]
         }
     }
@@ -226,9 +226,22 @@ export interface SiteConfig {
     }
     design: {
         background: 'barberia-urbana' | 'salon-de-belleza' | 'peluqueria-regular' | 'CrossBackground' | 'HexBackground' | 'WaveBackground'
-        paleta: 'violet' | 'yellow' | 'green' | 'orange' | 'amber' | 'red' | 'lime' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' | 'indigo' | 'purple' | 'fuchsia' | 'pink' | 'rose' | 'slate' | 'gray' | 'zinc' | 'neutral' | 'stone' |
-        /* SALON DE BELLEZA */'nude' | 'nude-rose' | 'lavender' | 'sage' | 'matcha' | 'glacial' | 'ocean' | 'latte' | 'blush' | 'mauve' | 'peach'
-        typography: 'barberiaUrbana' | 'salonBelleza' | 'peluqueriaRegular'
+        paleta: // Paletas Oscuras Originales
+                | 'violet' | 'yellow' | 'green' | 'orange' | 'amber' | 'red' | 'lime' | 'emerald'
+                | 'teal' | 'cyan' | 'sky' | 'blue' | 'indigo' | 'purple' | 'fuchsia' | 'pink'
+                | 'rose' | 'slate' | 'gray' | 'zinc' | 'neutral' | 'stone'
+
+                // Nuevas Paletas Light
+                | 'light-violet' | 'light-yellow' | 'light-green' | 'light-orange' | 'light-amber'
+                | 'light-red' | 'light-lime' | 'light-emerald' | 'light-teal' | 'light-cyan'
+                | 'light-sky' | 'light-blue' | 'light-indigo' | 'light-purple' | 'light-fuchsia'
+                | 'light-pink' | 'light-rose' | 'light-slate' | 'light-gray' | 'light-zinc'
+                | 'light-neutral' | 'light-stone'
+
+                // Paletas Salón de Belleza (Estilo Nude/Pastel)
+                | 'nude' | 'nude-rose' | 'lavender' | 'sage' | 'matcha' | 'glacial'
+                | 'ocean' | 'latte' | 'blush' | 'mauve' | 'peach'
+                typography: 'barberiaUrbana' | 'salonBelleza' | 'peluqueriaRegular'
     }
 }
 
@@ -268,7 +281,7 @@ export const SITE_CONFIG: SiteConfig = {
         },
         geo: {
             //** */ Importante para salir en "Cerca de mí" en Google Maps
-            latitude: 39.4699, 
+            latitude: 39.4699,
             longitude: -0.3763
         },
         areaServed: [
@@ -451,7 +464,7 @@ export const SITE_CONFIG: SiteConfig = {
     galeria: {
         metadata: {
             title: 'Galeria | [NOMBRE] Peluquería en [PUEBLO]',
-            description: '[EJ: Echa un vistazo a nuestros mejores trabajos. Encuentranos en [DIRECCIÓN: ej: Calle Andres 14, Alzira Valencia ]]. Reserva tu cita aquí ->' 
+            description: '[EJ: Echa un vistazo a nuestros mejores trabajos. Encuentranos en [DIRECCIÓN: ej: Calle Andres 14, Alzira Valencia ]]. Reserva tu cita aquí ->'
         },
         badge: 'PORTFOLIO',
         title: 'GALERIA',
@@ -554,8 +567,8 @@ export const SITE_CONFIG: SiteConfig = {
     },
     contacto: {
         metadata: {
-          title: 'Reservar Cita | [NOMBRE] Peluquería en [PUEBLO]',
-          description: 'Te esperamos anisosos en [NOMBRE], encuentranos en [DIRECCIÓN ej: Calle...]. Reserva tu cita aquí ->'  
+            title: 'Reservar Cita | [NOMBRE] Peluquería en [PUEBLO]',
+            description: 'Te esperamos anisosos en [NOMBRE], encuentranos en [DIRECCIÓN ej: Calle...]. Reserva tu cita aquí ->'
         },
         badge: "GET IN TOUCH",
         title: "Reserva \nContacto", // Usamos \n para el salto de línea
@@ -670,8 +683,8 @@ export const SITE_CONFIG: SiteConfig = {
         ],
     },
     design: {
-        background: 'WaveBackground',
-        paleta: 'cyan',
-        typography: 'barberiaUrbana'
+        background: 'peluqueria-regular',
+        paleta: 'light-orange',
+        typography: 'peluqueriaRegular'
     }
 }
