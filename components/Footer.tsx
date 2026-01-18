@@ -95,16 +95,16 @@ export const Footer = () => {
                 </div>
 
                 {/* --- COPYRIGHT --- */}
-                <div className="pt-4 border-t border-white/10 flex flex-col md:flex-row md:justify-between items-center gap-4 text-sm">
-                    <p className='md:text-left text-center'>
+                <div className="pt-4 border-t border-white/10 flex flex-col justify-center items-center gap-4 text-sm">
+                    <p className='text-center'>
                         © {footer.copyright.replace('[AÑO]', currentYear.toString())}. Todos los derechos reservados.
                     </p>
-                    <p className="flex items-center gap-1">
+                    {/* <p className="flex items-center gap-1">
                         Hecho con <Heart size={14} className="text-primary fill-primary" /> por
                         <Link href="https://tunegocioeninternet.es" className="hover:text-foreground transition-colors">
                             tunegocioeninternet.es
                         </Link>
-                    </p>
+                    </p> */}
                 </div>
             </div>
         </footer>

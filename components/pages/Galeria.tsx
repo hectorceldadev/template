@@ -80,12 +80,12 @@ const Galeria = () => {
                                     src={imagen.src}
                                     alt={imagen.alt}
                                     fill
-                                    className={`object-cover transition-transform duration-700 ${design.background === 'salon-de-belleza' ? '' : 'grayscale group-hover:grayscale-0'} group-hover:scale-110`}
+                                    className={`object-cover transition-transform duration-700 group-hover:scale-110`}
                                     sizes="(max-width: 768px) 100vw, 400px"
                                 />
 
                                 {/* Overlay Desktop (Hover) */}
-                                <div className="hidden lg:flex absolute inset-0 bg-linear-to-t from-foreground/90 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex-col justify-end p-8">
+                                <div className="hidden lg:flex absolute inset-0 bg-linear-to-t from-foreground/20 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex-col justify-end p-8">
                                     <span className="text-primary text-xs font-black uppercase tracking-[0.2em] mb-2 transition-transform duration-500 delay-100">
                                         {imagen.category}
                                     </span>

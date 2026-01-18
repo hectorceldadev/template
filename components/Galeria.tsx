@@ -133,15 +133,14 @@ const Galeria = () => {
                                             src={imagen.src}
                                             alt={imagen.alt}
                                             fill
-                                            className={`object-cover transition-transform duration-700 ${design.background === 'salon-de-belleza' ? '' : 'grayscale group-hover:grayscale-0'} group-hover:scale-110`}
+                                            className={`object-cover transition-transform duration-700 group-hover:scale-110`}
                                             sizes="(max-width: 768px) 100vw, 300px"
                                         />
-                                        <div className={`absolute inset-0 bg-linear-to-t ${design.background === 'salon-de-belleza' ? 'from-foreground/30 via-foreground/10' : 'from-black/90 via-black/20'}  to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6`}>
+                                        <div className={`absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6`}>
                                             <div className="flex justify-between items-center">
                                                 <p className="text-foreground text-sm font-bold leading-tight line-clamp-2 pr-4">
-                                                    {imagen.alt}
+                                                    {imagen.description}
                                                 </p>
-                                                <ArrowUpRight className="text-primary w-5 h-5 shrink-0" />
                                             </div>
                                         </div>
                                     </div>

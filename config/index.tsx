@@ -251,7 +251,7 @@ export const SITE_CONFIG: SiteConfig = {
             default: '[NOMBRE] | [Peluquería en [PUEBLO]]',
             template: '%s | [[NOMBRE] Peluquería en [PUEBLO]]' // %s se sustituye por el nombre de la página (ej: "Servicios")
         },
-        description: 'Tu peluquería referencia en [PUEBLO]. Especialistas [ESPECIFICAMOS SEGÚN NEGOCIO] Reserva tu cita aquí ->.',
+        description: 'Tu peluquería referencia en [PUEBLO]. Especialistas [ESPECIFICAMOS SEGÚN NEGOCIO] Reserva tu cita aquí ->',
         siteUrl: 'https://tunegocioeninternet.es', //** */ Pon aquí el dominio real cuando lo tengas
         keywords: ['peluquería en [PUEBLO]', 'barbería', 'estilismo', 'corte unisex', 'tinte orgánico'],
         openGraph: {
@@ -263,7 +263,7 @@ export const SITE_CONFIG: SiteConfig = {
             type: "website",
             images: [
                 {
-                    url: "/images/metadata/open-graph.png", //*COLOCAR IMAGEN
+                    url: "/images/open-graph/open-graph.png", //*COLOCAR IMAGEN
                     width: 1200,
                     height: 630,
                     alt: "[NOMBRE] - Peluquería en [PUEBLO]",
