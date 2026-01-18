@@ -477,28 +477,52 @@ export const SITE_CONFIG: SiteConfig = {
         },
         images: [
             {
-                src: "/images/gallery/[imagen].webp",
+                src: "/images/galeria/1.webp",
                 alt: "[Descripción Imagen]",
-                description: '[ej: Taper fade, con diseño y textura]',
-                category: 'Cortes'
+                description: '[ej: Diseño con textura]',
+                category: 'Diseño'
             },
             {
-                src: "/images/gallery/[imagen].webp",
+                src: "/images/galeria/2.webp",
                 alt: "[Descripción Imagen]",
-                description: '[ej: Taper fade, con diseño y textura]',
-                category: 'Uñas'
+                description: '[ej: Degradado simple]',
+                category: 'Degradado'
             },
             {
-                src: "/images/gallery/[imagen].webp",
+                src: "/images/galeria/3.webp",
                 alt: "[Descripción Imagen]",
-                description: '[ej: Taper fade, con diseño y textura]',
-                category: 'Cortes'
+                description: '[ej: Degradado con textura]',
+                category: 'Degradado'
             },
             {
-                src: "/images/gallery/[imagen].webp",
+                src: "/images/galeria/4.webp",
                 alt: "[Descripción Imagen]",
-                description: '[ej: Taper fade, con diseño y textura]',
-                category: 'Cortes'
+                description: '[ej: Rapado, con degradado sutil',
+                category: 'Rapado'
+            },
+            {
+                src: "/images/galeria/5.webp",
+                alt: "[Descripción Imagen]",
+                description: '[ej: Trenzado con lados rapados]',
+                category: 'Trenzado'
+            },
+            {
+                src: "/images/galeria/6.webp",
+                alt: "[Descripción Imagen]",
+                description: '[ej: Mohicano texturizado]',
+                category: 'Mohicano'
+            },
+            {
+                src: "/images/galeria/7.webp",
+                alt: "[Descripción Imagen]",
+                description: '[ej: Degradado simple con raya]',
+                category: 'Degradado'
+            },
+            {
+                src: "/images/galeria/8.webp",
+                alt: "[Descripción Imagen]",
+                description: '[ej: Degradado, con pelo texturizado]',
+                category: 'Degradado'
             },
         ]
     },
@@ -648,7 +672,7 @@ export const SITE_CONFIG: SiteConfig = {
             part2: "[Entendemos el corte de pelo como una forma de expresión. Ya sea un Low Fade pulido o un diseño Freestyle agresivo, nuestro objetivo es que tu imagen hable por ti antes de que tú digas una palabra.]"
         },
         quote: "[Precisión milimétrica, ambiente acogedor y trato de familia. Eso es lo que somos.]",
-        image: "/images/[imagen-local].webp",
+        image: "/images/home/salon-belleza-hero.webp",
         stats: [ //* AJUSTAR
             { label: "Años de Experiencia", value: 1, suffix: "+", icon: 'Trophy' },
             { label: "Clientes Satisfechos", value: 1000, suffix: "+", icon: 'Users' },
@@ -666,25 +690,25 @@ export const SITE_CONFIG: SiteConfig = {
                 id: 1,
                 name: "ej: Álvaro Celda",
                 role: "ej: Founder & CEO",
-                image: "/images/sobreNosotros/[nombre-foto].webp",
+                image: "/images/sobre-nosotros/1.webp",
             },
             {
                 id: 2,
                 name: "[Nombre]",
                 role: "[ROL]",
-                image: "/images/sobreNosotros/[nombre-foto].webp",
+                image: "/images/sobre-nosotros/2.webp",
             },
             {
                 id: 3,
                 name: "[Nombre]",
                 role: "[ROL]",
-                image: "/images/sobreNosotros/[nombre-foto].webp",
+                image: "/images/sobre-nosotros/3.webp",
             },
         ],
     },
     design: {
         background: 'peluqueria-regular',
-        paleta: 'light-orange',
+        paleta: 'yellow',
         typography: 'peluqueriaRegular'
     }
 }

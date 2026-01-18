@@ -133,7 +133,7 @@ export const SobreNosotros = () => {
                                 src={sobreNosotros.image}
                                 alt="Imagen Sobre Nosotros"
                                 fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                                className="object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                             {/* Overlay degradado */}
                             <div className="absolute inset-0 bg-linear-to-t from-primary/10 via-transparent to-transparent opacity-80" />

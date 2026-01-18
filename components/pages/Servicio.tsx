@@ -215,7 +215,7 @@ export const Servicio = ({ servicio }: Props) => {
                                             </li>
                                         ))}
                                     </ul>
-                                    <ArrowUpRight className='group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300' />
+                                    <ArrowUpRight className='group-hover:text-primary text-foreground group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300' />
                                 </div>
                             </div>
                         </Link>
