@@ -119,6 +119,8 @@ export interface SiteConfig {
         images: Array<{
             src: string
             alt: string
+            category: string
+            description: string
         }>;
     };
     reviews: {
@@ -338,7 +340,7 @@ export const SITE_CONFIG: SiteConfig = {
             icon: 'ArrowUpRight'
         },
         showSocialProof: true,
-        image: "/images/salon-belleza-hero.webp",
+        image: "/images/home/salon-belleza-hero.webp",
     },
     servicios: {
         metadata: {
@@ -455,7 +457,7 @@ export const SITE_CONFIG: SiteConfig = {
         title: 'GALERIA',
         desc: '[DESCRIPCIÓN DE LA GALERIA]',
         layout: 'marquee',
-        layoutOnPage: 'marquee',
+        layoutOnPage: 'grid',
         cta: {
             text: "VER TODA LA GALERÍA",
             href: "/galeria"
@@ -463,19 +465,27 @@ export const SITE_CONFIG: SiteConfig = {
         images: [
             {
                 src: "/images/gallery/[imagen].webp",
-                alt: "[Descripción Imagen]"
+                alt: "[Descripción Imagen]",
+                description: '[ej: Taper fade, con diseño y textura]',
+                category: 'Cortes'
             },
             {
                 src: "/images/gallery/[imagen].webp",
-                alt: "[Descripción Imagen]"
+                alt: "[Descripción Imagen]",
+                description: '[ej: Taper fade, con diseño y textura]',
+                category: 'Uñas'
             },
             {
                 src: "/images/gallery/[imagen].webp",
-                alt: "[Descripción Imagen]"
+                alt: "[Descripción Imagen]",
+                description: '[ej: Taper fade, con diseño y textura]',
+                category: 'Cortes'
             },
             {
                 src: "/images/gallery/[imagen].webp",
-                alt: "[Descripción Imagen]"
+                alt: "[Descripción Imagen]",
+                description: '[ej: Taper fade, con diseño y textura]',
+                category: 'Cortes'
             },
         ]
     },
@@ -660,8 +670,8 @@ export const SITE_CONFIG: SiteConfig = {
         ],
     },
     design: {
-        background: 'salon-de-belleza',
-        paleta: 'peach',
-        typography: 'salonBelleza'
+        background: 'WaveBackground',
+        paleta: 'cyan',
+        typography: 'barberiaUrbana'
     }
 }

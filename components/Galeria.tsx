@@ -5,7 +5,7 @@ import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { SITE_CONFIG } from "@/config"
 import { useGSAP } from "@gsap/react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -16,19 +16,23 @@ const Galeria = () => {
     const { galeria, design } = SITE_CONFIG;
     
     const containerRef = useRef<HTMLElement | null>(null)
+    const sliderRef = useRef<HTMLDivElement>(null)
+    const [isPaused, setIsPaused] = useState(false)
+    const animationRef = useRef<gsap.core.Tween | null>(null)
 
     // Duplicamos imágenes para el efecto infinito si es marquee
     const displayImages = galeria.layout === 'marquee' 
         ? [...galeria.images, ...galeria.images] 
         : galeria.images;
 
+
     useGSAP(() => {
 
         gsap.from('.animate-header', {
             y: 40,
-            opacity: 0,
-            duration: 0.6, 
+            duration: 0.4,
             stagger: 0.2,
+            opacity: 0,
             ease: 'power2.out',
             scrollTrigger: {
                 trigger: containerRef.current,
@@ -36,21 +40,46 @@ const Galeria = () => {
                 toggleActions: 'play none none reverse'
             }
         })
-        
-        gsap.from('.animate-content', {
-            y: 40,
-            opacity: 0,
-            duration: 0.6, 
-            stagger: 0.2,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: '.animate-content',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            }
-        })
-        
+
     }, { scope: containerRef })
+
+    useGSAP(() => {
+
+        if (!sliderRef.current) return
+
+        animationRef.current =
+            gsap.to(sliderRef.current, {
+                xPercent: -50,
+                duration: 20,
+                ease: 'none',
+                repeat: -1,
+                paused: true
+            })
+
+        ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: 'top 100%',
+            end: 'bottom 0%',
+            onEnter: () => animationRef.current?.play(),
+            onLeave: () => animationRef.current?.pause(),
+            onEnterBack: () => animationRef.current?.play(),
+            onLeaveBack: () => animationRef.current?.pause()
+        })
+
+        return () => {
+            animationRef.current?.kill()
+            ScrollTrigger.getAll().forEach(t => t.kill())
+        }
+
+    }, { scope: sliderRef })
+
+    useGSAP(() => {
+
+        if (animationRef.current) {
+            isPaused ? animationRef.current.timeScale(0.2) : animationRef.current.timeScale(1)
+        }
+
+    }, [isPaused])
 
     return (
         <section 
@@ -73,7 +102,10 @@ const Galeria = () => {
             {/* --- CONTENIDO --- */}
             {galeria.layout === 'marquee' ? (
                 // MODO MARQUEE
-                <div className="relative w-full z-20 mb-12">
+                <div 
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                    className="relative w-full z-20 mb-12">
                     {/* Gradient Masks */}
                     {
                         design.background === 'salon-de-belleza' 
@@ -86,13 +118,16 @@ const Galeria = () => {
                         </>
                     }
 
-                    <div className={`transform ${design.background === 'salon-de-belleza' ? '' : '-skew-y-2'} py-4`}>
-                        <div className={`bg-primary/5 border-y border-white/10 py-8 backdrop-blur-sm`}>
-                            <div className="flex gap-6 items-center w-max px-4 animate-marquee hover:[animation-play-state:paused]">
+                    <div 
+                        className={`transform ${design.background === 'salon-de-belleza' ? '' : '-skew-y-2'} py-4`}>
+                        <div className={`bg-primary/5 border-y border-foreground/10 py-8 backdrop-blur-sm`}>
+                            <div 
+                            ref={sliderRef}
+                            className="flex items-center w-max">
                                 {displayImages.map((imagen, index) => (
                                     <div
                                         key={`marquee-${index}`}
-                                        className="group relative w-72 h-96 shrink-0 rounded-2xl overflow-hidden border border-foreground/10 bg-background-secondary transition-all duration-500 hover:scale-105 hover:border-primary/50 cursor-pointer"
+                                        className="group relative mr-6 w-72 h-96 shrink-0 rounded-2xl overflow-hidden border border-foreground/10 bg-background-secondary transition-all duration-500 hover:scale-105 hover:border-primary/50 cursor-pointer"
                                     >
                                         <Image
                                             src={imagen.src}

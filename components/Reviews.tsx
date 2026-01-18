@@ -2,10 +2,10 @@
 
 import { Star, Quote, User } from "lucide-react"
 import { SITE_CONFIG } from "@/config"
+import { useRef, useState } from "react"
+import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { useRef } from "react"
-import { useGSAP } from "@gsap/react"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -14,11 +14,14 @@ export const Reviews = () => {
     const { reviews, design } = SITE_CONFIG;
 
     const containerRef = useRef<HTMLElement | null>(null)
+    const sliderRef = useRef<HTMLDivElement>(null)
+    const animateRef = useRef<gsap.core.Tween | null>(null) // Referencia para controlar la animación
+    const [isPause, setIsPause] = useState(false) // Estado para la pausa
 
-    const marqueeReviews = [...reviews.items, ...reviews.items, ...reviews.items].slice(0, 12); 
+    const marqueeReviews = [...reviews.items, ...reviews.items]; 
 
+    // 1. Animación de Entrada (Títulos)
     useGSAP(() => {
-
         gsap.from('.animate-header', {
             y: 40,
             opacity: 0,
@@ -31,8 +34,49 @@ export const Reviews = () => {
                 toggleActions: 'play none none reverse'
             }
         })
-
     }, { scope: containerRef })
+
+    // 2. Lógica del Marquee (Movimiento + ScrollTrigger)
+    useGSAP(() => {
+        if (!sliderRef.current) return
+
+        // Creamos la animación pero pausada inicialmente
+        animateRef.current = gsap.to(sliderRef.current, {
+            xPercent: -50, // Movemos exactamente el 50% (la mitad duplicada)
+            duration: 80,  // Velocidad (ajusta los segundos si quieres más lento/rápido)
+            ease: 'none',
+            repeat: -1,
+            paused: true   // Esperamos a que entre en pantalla
+        })
+
+        // Controlamos Play/Pause según el scroll para optimizar rendimiento
+        ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: 'top 80%',
+            end: 'bottom 0%',
+            onEnter: () => animateRef.current?.play(),
+            onLeave: () => animateRef.current?.pause(),
+            onEnterBack: () => animateRef.current?.play(),
+            onLeaveBack: () => animateRef.current?.pause()
+        })
+
+        // Limpieza al desmontar
+        return () => {
+            animateRef.current?.kill()
+            ScrollTrigger.getAll().forEach(t => t.kill())
+        }
+    }, { scope: containerRef })
+
+    // 3. Efecto "Slow Motion" al hacer Hover
+    useGSAP(() => {
+        if (animateRef.current) {
+            // Si está en pausa, reducimos la velocidad a 0.2, si no, a 1 (normal)
+            gsap.to(animateRef.current, {
+                timeScale: isPause ? 0.2 : 1, 
+                duration: 0.5 
+            })
+        }
+    }, [isPause])
 
     return (
         <section
@@ -55,27 +99,32 @@ export const Reviews = () => {
                 </p>
             </div>
 
-            {/* --- SLIDER INFINITO (CSS ONLY) --- */}
-            <div className={`${design.background === 'salon-de-belleza' ? 'relative w-full' : 'relative w-full bg-primary/5 border-y border-foreground/10 py-10 backdrop-blur-sm transform'}`}>
+            {/* --- SLIDER INFINITO --- */}
+            <div 
+                // Añadimos los eventos para detectar el ratón
+                onMouseEnter={() => setIsPause(true)}
+                onMouseLeave={() => setIsPause(false)}
+                className={`${design.background === 'salon-de-belleza' ? 'relative w-full' : 'relative w-full bg-primary/5 border-y border-foreground/10 py-10 backdrop-blur-sm transform'} transition-colors duration-300`}
+            >
                 
-                {/* Sombras laterales (Fade effect) */}
-                {
-                    design.background === 'salon-de-belleza' 
-                    ?
-                    ''
-                    :
+                {/* Sombras laterales */}
+                {design.background !== 'salon-de-belleza' && (
                     <>
                         <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-background via-background/80 to-transparent z-20 pointer-events-none" />
                         <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-background via-background/80 to-transparent z-20 pointer-events-none" />
                     </>
-                }
+                )}
 
                 {/* Contenedor Animado */}
-                <div className="flex gap-6 w-max px-4 animate-marquee">
+                <div 
+                    ref={sliderRef}
+                    className="flex w-max px-4"
+                >
                     {marqueeReviews.map((review, i) => (
                         <div
                             key={`${i}-${review.user}`}
-                            className="flex flex-col relative w-80 md:w-96 shrink-0 p-8 rounded-3xl bg-background-secondary border border-foreground/10 transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 hover:scale-[1.02]"
+                            // Mantenemos el mr-6 para el espacio perfecto sin 'gap'
+                            className="flex flex-col mr-6 relative w-80 md:w-96 shrink-0 p-8 rounded-3xl bg-background-secondary border border-foreground/10 transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 hover:scale-[1.02]"
                         >
                             {/* Icono decorativo */}
                             <Quote className="absolute top-6 right-6 w-10 h-10 text-primary/10 rotate-180" />

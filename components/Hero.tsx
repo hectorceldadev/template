@@ -119,7 +119,7 @@ const Hero = () => {
                         {/* Decoración */}
                         <div className="absolute -inset-4 bg-primary/20 rounded-4xl rotate-1 blur-sm hidden sm:block"></div>
 
-                        <div className="relative aspect-3/4 rounded-2xl overflow-hidden grayscale border border-foreground/10 bg-background shadow-2xl shadow-background/60">
+                        <div className="relative aspect-3/4 rounded-2xl overflow-hidden border border-foreground/10 bg-background shadow-2xl shadow-background/60">
                             {/* IMAGEN DEL CONFIG */}
                             <Image
                                 src={hero.image}
